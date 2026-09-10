@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RIYADH SMOKE & GRILL | مداخن ومشويات الرياض - نظام الحجوزات الملكي VIP</title>
+  <meta name="description" content="نظام حجز الطاولات الملكي وقائمة الطعام الفاخرة لمطعم مداخن ومشويات الرياض. تجربة طهي فاخرة على حطب وجمر النعيمي. مهندس بواسطة ABDO HOUSE." />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#08090C',
+            slateSurface: '#12141C',
+            slateElevated: '#1A1D28',
+            gold: {
+              300: '#FCE09B',
+              400: '#F3E5AB',
+              500: '#D4AF37',
+              600: '#AA8422',
+              700: '#997B1E',
+            },
+            emeraldAccent: {
+              400: '#34D399',
+              500: '#10B981',
+              600: '#059669',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-obsidian text-slate-100 min-h-screen relative selection:bg-amber-500 selection:text-black">
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- Ambient Luxury Glow Background Elements -->
+  <div class="fixed top-0 left-1/4 w-96 h-96 ambient-glow-gold pointer-events-none -z-10 blur-3xl"></div>
+  <div class="fixed bottom-1/4 right-10 w-[30rem] h-[30rem] ambient-glow-emerald pointer-events-none -z-10 blur-3xl"></div>
+
+  <!-- =========================================================================
+       1. LUXURY NAVIGATION BAR
+       ========================================================================= -->
+  <header class="sticky top-0 z-40 bg-obsidian/90 backdrop-blur-xl border-b border-white/10 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-between">
+      
+      <!-- Brand Identity & Symmetrical Vector Logo -->
+      <a href="#" class="flex items-center gap-3.5 group">
+        <!-- Autonomous Luxury SVG Logo -->
+        <div class="relative w-14 h-14 flex items-center justify-center flex-shrink-0">
+          <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-[0_0_12px_rgba(212,175,55,0.45)]" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Gradients -->
+            <defs>
+              <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FCE09B" />
+                <stop offset="50%" stop-color="#D4AF37" />
+                <stop offset="100%" stop-color="#997B1E" />
+              </linearGradient>
+              <linearGradient id="innerGlow" x1="50%" y1="0%" x2="50%" y2="100%">
+                <stop offset="0%" stop-color="#FF9E00" />
+                <stop offset="100%" stop-color="#D4AF37" />
+              </linearGradient>
+            </defs>
+            <!-- Outer Geometric Smoke Ring -->
+            <circle cx="50" cy="50" r="44" stroke="url(#goldGrad)" stroke-width="1.8" stroke-dasharray="6 3" opacity="0.85" />
+            <circle cx="50" cy="50" r="39" stroke="url(#goldGrad)" stroke-width="1" opacity="0.4" />
+            <!-- Royal Diamond Accents -->
+            <polygon points="50,4 53,8 50,12 47,8" fill="url(#goldGrad)" />
+            <polygon points="50,88 53,92 50,96 47,92" fill="url(#goldGrad)" />
+            <polygon points="4,50 8,53 12,50 8,47" fill="url(#goldGrad)" />
+            <polygon points="88,50 92,53 96,50 92,47" fill="url(#goldGrad)" />
+            <!-- Symmetrical Grill Arch & Crest -->
+            <path d="M26 68 C26 38 74 38 74 68" stroke="url(#goldGrad)" stroke-width="2.2" stroke-linecap="round" />
+            <!-- Royal Charcoal Grill Bars -->
+            <line x1="33" y1="67" x2="33" y2="52" stroke="url(#goldGrad)" stroke-width="1.6" stroke-linecap="round" />
+            <line x1="41" y1="67" x2="41" y2="45" stroke="url(#goldGrad)" stroke-width="1.6" stroke-linecap="round" />
+            <line x1="50" y1="67" x2="50" y2="42" stroke="url(#goldGrad)" stroke-width="2" stroke-linecap="round" />
+            <line x1="59" y1="67" x2="59" y2="45" stroke="url(#goldGrad)" stroke-width="1.6" stroke-linecap="round" />
+            <line x1="67" y1="67" x2="67" y2="52" stroke="url(#goldGrad)" stroke-width="1.6" stroke-linecap="round" />
+            <!-- Luxury Stylized Fire Core -->
+            <path d="M50 20 C54 27 61 32 58 41 C55 45 52 47 50 49 C48 47 45 45 42 41 C39 32 46 27 50 20 Z" fill="url(#innerGlow)" />
+            <circle cx="50" cy="38" r="2.5" fill="#FFE599" />
+            <!-- Bottom Base Hearth -->
+            <path d="M30 73 L70 73" stroke="url(#goldGrad)" stroke-width="3" stroke-linecap="round" />
+            <path d="M38 78 L62 78" stroke="url(#goldGrad)" stroke-width="1.8" stroke-linecap="round" />
+          </svg>
+        </div>
+
+        <div class="flex flex-col">
+          <span class="font-cinzel text-lg sm:text-xl font-black tracking-wider text-white group-hover:text-amber-300 transition-colors leading-none">
+            RIYADH SMOKE & GRILL
+          </span>
+          <span class="text-xs sm:text-sm font-bold text-amber-400 mt-1 tracking-wide">
+            مداخن ومشويات الرياض
+          </span>
+          <span class="text-[10px] text-slate-400 tracking-wider font-light mt-0.5">
+            Engineered by <strong class="text-amber-300 font-semibold">ABDO HOUSE</strong>
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden lg:flex items-center gap-8">
+        <a href="#hero" class="text-sm text-slate-300 hover:text-amber-400 font-medium transition-colors" data-i18n="navHome">الرئيسية</a>
+        <a href="#menu" class="text-sm text-slate-300 hover:text-amber-400 font-medium transition-colors" data-i18n="navMenu">قائمة الطعام</a>
+        <a href="#zones" class="text-sm text-slate-300 hover:text-amber-400 font-medium transition-colors" data-i18n="navZones">المناطق والطاولات</a>
+        <a href="#experience" class="text-sm text-slate-300 hover:text-amber-400 font-medium transition-colors" data-i18n="navExperience">أجواء المطعم</a>
+        <a href="#reviews" class="text-sm text-slate-300 hover:text-amber-400 font-medium transition-colors" data-i18n="navReviews">تقييمات الضيوف</a>
+      </nav>
+
+      <!-- Header Actions: Language Switch, Cart, Primary CTA -->
+      <div class="flex items-center gap-3">
+        <!-- Language Switcher Toggle -->
+        <button id="lang-toggle-btn" onclick="setLanguage(currentLang === 'ar' ? 'en' : 'ar')" class="h-10 px-3 rounded-xl bg-slate-800/80 border border-white/10 hover:border-amber-400/50 flex items-center gap-1.5 transition-all text-sm">
+          <span class="text-xs font-bold text-amber-300">EN</span>
+          <span class="text-xs text-slate-300">English</span>
+        </button>
+
+        <!-- Cart Drawer Button -->
+        <button onclick="toggleCart()" class="relative h-10 w-10 rounded-xl bg-slate-800/80 border border-white/10 hover:border-amber-400/50 flex items-center justify-center text-slate-300 hover:text-amber-400 transition-all">
+          <i class="fas fa-shopping-bag text-base"></i>
+          <span id="cart-count-badge" class="absolute -top-1.5 -right-1.5 bg-amber-500 text-black text-[10px] font-black h-5 w-5 rounded-full items-center justify-center hidden border-2 border-obsidian">0</span>
+        </button>
+
+        <!-- Primary Reserve Button -->
+        <button onclick="openReservationModal()" class="btn-gold hidden sm:flex items-center gap-2 h-11 px-5 rounded-xl text-sm font-bold shadow-lg shadow-amber-500/20">
+          <i class="fas fa-crown text-xs"></i>
+          <span data-i18n="navReserve">حجز طاولة VIP</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       2. HERO SECTION WITH CINEMATIC SMOKE AMBIANCE
+       ========================================================================= -->
+  <section id="hero" class="relative pt-12 pb-24 overflow-hidden">
+    <!-- Dark Smoke & Fire Embers Backdrop -->
+    <div class="absolute inset-0 -z-10 overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1600&q=80" alt="Royal Smokehouse Ambiance" class="w-full h-full object-cover object-center opacity-25 filter brightness-50 contrast-125 smoke-effect" />
+      <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/85 to-obsidian/70"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+      <!-- Luxury Riyadh Pill Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-400/30 text-amber-300 text-xs font-semibold mb-6 backdrop-blur-md">
+        <i class="fas fa-gem text-amber-400"></i>
+        <span>مستوحى من أرقى دور الضيافة في كافد وبجيري فيا رياض</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.2] mb-6 max-w-5xl mx-auto">
+        <span data-i18n="heroTitlePart1">فخامة النكهة النجدية</span>
+        <br />
+        <span class="gold-gradient-text" data-i18n="heroTitlePart2">على جمر الحطب الملكي</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-slate-300 text-base sm:text-xl max-w-3xl mx-auto leading-relaxed mb-10 font-normal" data-i18n="heroSubtitle">
+        تجربة طهي استثنائية في قلب الرياض تمزج عراقة لحوم النعيمي المدخنة مع أرقى معايير الضيافة العالمية المستوحاة من كبرى دور الضيافة في كافد وبجيري فيا رياض.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        <button onclick="openReservationModal()" class="w-full sm:w-auto btn-gold py-4 px-8 rounded-2xl text-base font-extrabold flex items-center justify-center gap-3 shadow-xl shadow-amber-500/25">
+          <i class="fas fa-calendar-check text-lg"></i>
+          <span data-i18n="heroReserveBtn">احجز طاولتك الملكية الآن</span>
+        </button>
+        <a href="#menu" class="w-full sm:w-auto py-4 px-8 rounded-2xl text-base font-semibold bg-slate-800/80 hover:bg-slate-700/80 border border-white/10 hover:border-amber-400/40 text-white transition-all flex items-center justify-center gap-2 backdrop-blur-md">
+          <i class="fas fa-utensils text-amber-400"></i>
+          <span data-i18n="heroMenuBtn">استكشف قائمة الطعام الفاخرة</span>
+        </a>
+      </div>
+
+      <!-- Quick Interactive Reservation Bar -->
+      <div class="glass-panel p-4 sm:p-6 rounded-3xl max-w-5xl mx-auto shadow-2xl border border-amber-400/20 text-right">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-center">
+          
+          <!-- Guests Input -->
+          <div class="bg-slate-900/80 p-3 rounded-2xl border border-white/5">
+            <label class="block text-[11px] font-semibold text-slate-400 mb-1" data-i18n="quickGuests">عدد الضيوف</label>
+            <div class="flex items-center gap-2 text-white font-bold">
+              <i class="fas fa-user-friends text-amber-400 text-sm"></i>
+              <select id="quick-guests-select" onchange="setPartySize(parseInt(this.value))" class="bg-transparent text-sm w-full font-bold focus:outline-none cursor-pointer">
+                <option value="2" class="bg-slate-900">ضيفين (2 Guests)</option>
+                <option value="4" selected class="bg-slate-900">4 ضيوف (4 Guests)</option>
+                <option value="6" class="bg-slate-900">6 ضيوف (6 Guests)</option>
+                <option value="8" class="bg-slate-900">8 ضيوف (8 Guests)</option>
+                <option value="10" class="bg-slate-900">10 ضيوف (10 Guests)</option>
+                <option value="12" class="bg-slate-900">12+ ضيف (VIP Salon)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Date Input -->
+          <div class="bg-slate-900/80 p-3 rounded-2xl border border-white/5">
+            <label class="block text-[11px] font-semibold text-slate-400 mb-1" data-i18n="quickDate">تاريخ الزيارة</label>
+            <div class="flex items-center gap-2 text-white font-bold">
+              <i class="fas fa-calendar-day text-amber-400 text-sm"></i>
+              <input type="date" id="quick-date-input" onchange="selectBookingDate(this.value)" class="bg-transparent text-sm w-full font-bold focus:outline-none cursor-pointer text-white" />
+            </div>
+          </div>
+
+          <!-- Dining Period -->
+          <div class="bg-slate-900/80 p-3 rounded-2xl border border-white/5">
+            <label class="block text-[11px] font-semibold text-slate-400 mb-1" data-i18n="quickTime">الفترة الزمنية</label>
+            <div class="flex items-center gap-2 text-white font-bold">
+              <i class="fas fa-clock text-amber-400 text-sm"></i>
+              <select id="quick-period-select" onchange="selectDiningPeriod(this.value)" class="bg-transparent text-sm w-full font-bold focus:outline-none cursor-pointer">
+                <option value="lunch" class="bg-slate-900">غداء عمل (1:00 PM - 4:30 PM)</option>
+                <option value="sunset" class="bg-slate-900">جلسة الغروب (5:00 PM - 7:00 PM)</option>
+                <option value="dinner" selected class="bg-slate-900">عشاء فاخر (7:30 PM - 11:30 PM)</option>
+                <option value="latenight" class="bg-slate-900">السهرة (12:00 AM - 2:00 AM)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Action Button -->
+          <div>
+            <button onclick="openReservationModal()" class="w-full h-full btn-gold py-3.5 px-4 rounded-2xl text-sm font-bold flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20">
+              <i class="fas fa-search"></i>
+              <span data-i18n="quickSearchBtn">تحقق من التوفر الفوري</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Trust Badges -->
+      <div class="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+        <div class="flex items-center gap-3 p-3 bg-slate-900/40 rounded-2xl border border-white/5 backdrop-blur-sm">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-fire"></i>
+          </div>
+          <div class="text-right">
+            <div class="text-xs font-bold text-white">حطب السمر الطبيعي</div>
+            <div class="text-[11px] text-slate-400">تدخين بطيء لمدة 14 ساعة</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 p-3 bg-slate-900/40 rounded-2xl border border-white/5 backdrop-blur-sm">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <div class="text-right">
+            <div class="text-xs font-bold text-white">نعيمي بلدي فاخر</div>
+            <div class="text-[11px] text-slate-400">مذبوح طازج يومياً 100%</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 p-3 bg-slate-900/40 rounded-2xl border border-white/5 backdrop-blur-sm">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-crown"></i>
+          </div>
+          <div class="text-right">
+            <div class="text-xs font-bold text-white">خدمة بتلر خاصة</div>
+            <div class="text-[11px] text-slate-400">كابينات VIP للعائلات</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 p-3 bg-slate-900/40 rounded-2xl border border-white/5 backdrop-blur-sm">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <div class="text-right">
+            <div class="text-xs font-bold text-white">ضمان الحجز الفوري</div>
+            <div class="text-[11px] text-slate-400">محرك SevenRooms VIP</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       3. SEATING ZONES & ARCHITECTURAL EXPERIENCE
+       ========================================================================= -->
+  <section id="zones" class="py-20 relative bg-slate-950/60 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="text-xs uppercase font-bold tracking-widest text-amber-400 mb-2 block" data-i18n="zonesTitle">مناطق الجلوس الفاخرة</span>
+        <h2 class="text-3xl sm:text-5xl font-black text-white">
+          أجواء ملكية تناسب كل لحظة واحتفال
+        </h2>
+        <div class="w-20 h-1 bg-gradient-to-r from-amber-500 to-amber-200 mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <!-- 3 Distinct Luxury Dining Zones -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Zone A: Main Dining Hall -->
+        <div class="glass-panel rounded-3xl overflow-hidden border border-white/10 hover:border-amber-400/50 transition-all duration-300 group flex flex-col justify-between">
+          <div class="relative h-64 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80" alt="Main Dining Hall" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-black/30"></div>
+            <span class="absolute top-4 right-4 bg-black/70 backdrop-blur-md border border-amber-400/30 text-amber-300 text-xs px-3 py-1 rounded-full font-bold">
+              الصالة الرئيسية الملكية
+            </span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-white mb-2 group-hover:text-amber-300 transition-colors">
+                الصالة الرئيسية الملكية (Main Hall)
+              </h3>
+              <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                تصميم صوتي هادئ ومعزول، مع إطلالة مباشرة على لهب الفحم وشوايات الحطب المفتوحة وأجواء العزف الحي الهادئ.
+              </p>
+              <div class="flex items-center gap-2 text-xs text-amber-400/90 mb-6">
+                <i class="fas fa-chair"></i>
+                <span>طاولات T-01 إلى T-08 • كراسي جلدية وبوثات فاخرة</span>
+              </div>
+            </div>
+            <button onclick="openReservationModal('main_hall')" class="w-full py-3 rounded-xl bg-slate-800/90 hover:bg-amber-500 hover:text-black text-amber-300 text-sm font-bold border border-amber-400/30 transition-all flex items-center justify-center gap-2">
+              <i class="fas fa-calendar-alt"></i>
+              <span>احجز في هذه الصالة</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Zone B: Panoramic Terrace -->
+        <div class="glass-panel rounded-3xl overflow-hidden border border-white/10 hover:border-amber-400/50 transition-all duration-300 group flex flex-col justify-between">
+          <div class="relative h-64 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=800&q=80" alt="Panoramic Terrace" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-black/30"></div>
+            <span class="absolute top-4 right-4 bg-black/70 backdrop-blur-md border border-amber-400/30 text-amber-300 text-xs px-3 py-1 rounded-full font-bold">
+              التراس الخارجي المفتوح
+            </span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-white mb-2 group-hover:text-amber-300 transition-colors">
+                التراس البانورامي (Skyline Terrace)
+              </h3>
+              <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                جلسات خارجية في الهواء الطلق مع إطلالة ساحرة على أفق أبراج الرياض ومبردات رذاذ ذكية تضمن برودة مثالية في كل الأوقات.
+              </p>
+              <div class="flex items-center gap-2 text-xs text-amber-400/90 mb-6">
+                <i class="fas fa-cloud-moon"></i>
+                <span>طاولات T-09 إلى T-14 • إطلالة سماء وأفق الرياض</span>
+              </div>
+            </div>
+            <button onclick="openReservationModal('terrace')" class="w-full py-3 rounded-xl bg-slate-800/90 hover:bg-amber-500 hover:text-black text-amber-300 text-sm font-bold border border-amber-400/30 transition-all flex items-center justify-center gap-2">
+              <i class="fas fa-calendar-alt"></i>
+              <span>احجز في التراس المفتوح</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Zone C: VIP Cabana -->
+        <div class="glass-panel rounded-3xl overflow-hidden border border-amber-400/30 hover:border-amber-400 transition-all duration-300 group flex flex-col justify-between relative shadow-2xl">
+          <div class="absolute top-0 right-0 left-0 bg-gradient-to-r from-amber-500 to-amber-600 text-black text-center text-xs font-black py-1 z-10">
+            👑 التجربة الأكثر خصوصية وفخامة
+          </div>
+          <div class="relative h-64 overflow-hidden pt-6">
+            <img src="https://images.unsplash.com/photo-1578474846511-04ba529f0b88?w=800&q=80" alt="Private VIP Cabana" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-black/30"></div>
+            <span class="absolute top-10 right-4 bg-black/80 backdrop-blur-md border border-amber-400 text-amber-300 text-xs px-3 py-1 rounded-full font-bold">
+              كابينة VIP خاصة (+150 ر.س)
+            </span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-white mb-2 group-hover:text-amber-300 transition-colors">
+                أجنحة وكابينات VIP الملكية
+              </h3>
+              <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                خصوصية مطلقة للعائلات ورجال الأعمال، تشمل خدمة نادل خاص (Private Butler)، وأدوات مائدة مذهبة وشاشات مخصصة.
+              </p>
+              <div class="flex items-center gap-2 text-xs text-amber-400/90 mb-6">
+                <i class="fas fa-concierge-bell"></i>
+                <span>أجنحة T-15 إلى T-18 • خدمة بتلر شخصي حصرية</span>
+              </div>
+            </div>
+            <button onclick="openReservationModal('vip_cabana')" class="w-full btn-gold py-3 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20">
+              <i class="fas fa-crown"></i>
+              <span>احجز كابينة VIP الملكية</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       4. DIGITAL MENU CATALOG (ALL 10 REAL ASSETS)
+       ========================================================================= -->
+  <section id="menu" class="py-24 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-12">
+        <span class="text-xs uppercase font-bold tracking-widest text-amber-400 mb-2 block" data-i18n="navMenu">قائمة الطعام الفاخرة</span>
+        <h2 class="text-3xl sm:text-5xl font-black text-white">
+          أطباقنا المدخنة والمشوية بعناية الشيف
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto mt-3">
+          جميع أطباقنا محضرة من لحوم النعيمي البلدي الطازج والمكونات الشامية والنجدية الأصيلة
+        </p>
+      </div>
+
+      <!-- Live Search Bar -->
+      <div class="max-w-lg mx-auto mb-8 px-2">
+        <div class="relative flex items-center">
+          <span class="absolute inset-y-0 start-4 flex items-center pointer-events-none text-amber-400/80">
+            <i class="fas fa-search text-sm"></i>
+          </span>
+          <input 
+            type="text" 
+            id="menu-search-input" 
+            oninput="onSearchMenu(this.value)" 
+            placeholder="ابحث عن طبقك المفضل (كباب، ريش، حلى...)" 
+            class="w-full bg-slate-900/90 border border-white/10 hover:border-amber-400/50 focus:border-amber-400 rounded-2xl py-3.5 px-11 text-sm text-white placeholder-slate-500 focus:outline-none shadow-xl transition-all"
+            data-i18n="searchPlaceholder"
+          />
+          <button onclick="clearMenuSearch()" class="absolute inset-y-0 end-4 flex items-center text-slate-500 hover:text-amber-400 text-xs transition-colors" title="Clear">
+            <i class="fas fa-times-circle text-base"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="flex items-center justify-center flex-wrap gap-2 sm:gap-3 mb-12">
+        <button onclick="filterMenu('all', this)" class="menu-filter-btn px-5 py-2.5 rounded-full text-sm font-bold bg-amber-500 text-black shadow-lg transition-all" data-i18n="filterAll">
+          جميع الأطباق الفاخرة
+        </button>
+        <button onclick="filterMenu('grills', this)" class="menu-filter-btn px-5 py-2.5 rounded-full text-sm font-medium bg-slate-800/80 text-slate-300 hover:text-amber-400 border border-white/5 transition-all" data-i18n="filterGrills">
+          المشاوي ولحوم الفحم
+        </button>
+        <button onclick="filterMenu('mezzeh', this)" class="menu-filter-btn px-5 py-2.5 rounded-full text-sm font-medium bg-slate-800/80 text-slate-300 hover:text-amber-400 border border-white/5 transition-all" data-i18n="filterMezzeh">
+          المقبلات والمتبلات
+        </button>
+        <button onclick="filterMenu('sweets', this)" class="menu-filter-btn px-5 py-2.5 rounded-full text-sm font-medium bg-slate-800/80 text-slate-300 hover:text-amber-400 border border-white/5 transition-all" data-i18n="filterSweets">
+          الحلويات والمشروبات
+        </button>
+      </div>
+
+      <!-- Dynamic Dishes Grid (Rendered by JS) -->
+      <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Dish cards are dynamically rendered by app.js with high-res Unsplash photos, calories & prices in SAR -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       5. ATMOSPHERE & GUEST REVIEWS
+       ========================================================================= -->
+  <section id="reviews" class="py-20 bg-slate-950/70 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="text-xs uppercase font-bold tracking-widest text-amber-400 mb-2 block" data-i18n="navReviews">تقييمات الضيوف</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-white">
+          أصداء الفخامة في قلوب نزلائنا
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass-panel p-6 rounded-3xl border border-white/5">
+          <div class="flex items-center gap-1 text-amber-400 mb-4">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6">
+            "من أفضل تجارب الشواء الفاخر في الرياض بلا منازع. حجزنا كابينة VIP للاحتفال بذكرى زواجنا، وكانت الترتيبات مع الكيكة والورد والبتلر الخاص فوق التوقعات."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-amber-500/20 text-amber-400 font-bold flex items-center justify-center text-sm">
+              س.ع
+            </div>
+            <div>
+              <div class="text-sm font-bold text-white">سعود العتيبي</div>
+              <div class="text-xs text-slate-400">كابينة VIP الخاصة • الرياض</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-panel p-6 rounded-3xl border border-white/5">
+          <div class="flex items-center gap-1 text-amber-400 mb-4">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6">
+            "لحم النعيمي طري جداً ونكهة الحطب متوازنة تماماً. نظام حجز الطاولات واختيار الطاولة على المخطط قبل الوصول وفر علينا وقتاً كبيراً ومنحنا أفضل مقعد في التراس."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-amber-500/20 text-amber-400 font-bold flex items-center justify-center text-sm">
+              م.ش
+            </div>
+            <div>
+              <div class="text-sm font-bold text-white">المهندس مشعل القحطاني</div>
+              <div class="text-xs text-slate-400">التراس البانورامي • كافد</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-panel p-6 rounded-3xl border border-white/5">
+          <div class="flex items-center gap-1 text-amber-400 mb-4">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6">
+            "الضيافة نجدية راقية بمعايير عالمية. الكباب النعيمي والريش بالعسل تحفة طهي لن تجد مثلها في مطاعم أخرى. تأكيد الحجز المباشر بالواتساب احترافي للغاية."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-amber-500/20 text-amber-400 font-bold flex items-center justify-center text-sm">
+              ن.د
+            </div>
+            <div>
+              <div class="text-sm font-bold text-white">الدكتورة نورة الدوسري</div>
+              <div class="text-xs text-slate-400">الصالة الرئيسية الملكية</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       6. AGENCY ATTRIBUTION FOOTER (ABDO HOUSE)
+       ========================================================================= -->
+  <footer class="bg-black border-t border-amber-400/20 pt-16 pb-28 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Sleek Gold-Trimmed Agency Callout Banner -->
+      <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-amber-400/40 mb-16 shadow-2xl bg-gradient-to-r from-amber-500/10 via-slate-900 to-amber-500/10">
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-6 text-center lg:text-right">
+          <div class="max-w-2xl">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold mb-2">
+              <i class="fas fa-code"></i>
+              <span>ENGINEERED BY ABDO HOUSE</span>
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold text-white leading-snug" data-i18n="footerText">
+              صُمم هذا النظام التفاعلي لإدارة الحجوزات والمطاعم بواسطة ABDO HOUSE | تبي موقع ونظام حجز لكافيهك أو مطعمك خلال 48 ساعة؟
+            </h3>
+          </div>
+          <div>
+            <a href="https://wa.me/201104689702?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%20ABDO%20HOUSE%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%AA%D8%B7%D9%88%D9%8A%D8%B1%20%D9%86%D8%B8%D8%A7%D9%85%20%D8%AD%D8%AC%D9%88%D8%B2%D8%A7%D8%AA%20%D9%88%D9%85%D9%86%D9%8A%D9%88%20%D9%81%D8%A7%D8%AE%D8%B1%20%D9%84%D9%85%D8%B7%D8%B9%D9%85%D9%8A" target="_blank" class="btn-gold py-3.5 px-6 rounded-2xl text-sm font-extrabold flex items-center gap-2 shadow-xl shadow-amber-500/30 whitespace-nowrap">
+              <i class="fab fa-whatsapp text-lg"></i>
+              <span data-i18n="footerContactBtn">تواصل معنا واتساب: 01104689702</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Restaurant Information Columns -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/5">
+        <div class="space-y-4">
+          <div class="font-cinzel text-xl font-black text-white">RIYADH SMOKE & GRILL</div>
+          <div class="text-sm font-bold text-amber-400">مداخن ومشويات الرياض</div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            الوجهة الأولى لعشاق اللحوم النعيمية المدخنة والمشاوي على الفحم في الرياض، بمعايير ضيافة كافد وبجيري فيا رياض.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-bold text-white mb-4">أوقات العمل الرسمية</h4>
+          <ul class="text-xs text-slate-400 space-y-2">
+            <li>غداء العمل: 1:00 م - 4:30 م</li>
+            <li>جلسة الغروب: 5:00 م - 7:00 م</li>
+            <li>العشاء الفاخر: 7:30 م - 11:30 م</li>
+            <li>سهرة الحطب: 12:00 ص - 2:00 ص</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-bold text-white mb-4">الموقع والوصول</h4>
+          <ul class="text-xs text-slate-400 space-y-2">
+            <li><i class="fas fa-map-marker-alt text-amber-400 mr-2"></i> الرياض، طريق الملك فهد - بالقرب من كافد</li>
+            <li><i class="fas fa-parking text-amber-400 mr-2"></i> خدمة صف السيارات الملكية (Valet Parking) متوفرة</li>
+            <li><i class="fas fa-phone-alt text-amber-400 mr-2"></i> هاتف الاستقبال: 01104689702</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-bold text-white mb-4">قنوات التواصل</h4>
+          <div class="flex items-center gap-3 mb-4">
+            <a href="https://wa.me/201104689702" target="_blank" class="w-10 h-10 rounded-xl bg-slate-900 text-amber-400 hover:bg-amber-500 hover:text-black flex items-center justify-center transition-all">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-xl bg-slate-900 text-amber-400 hover:bg-amber-500 hover:text-black flex items-center justify-center transition-all">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-xl bg-slate-900 text-amber-400 hover:bg-amber-500 hover:text-black flex items-center justify-center transition-all">
+              <i class="fab fa-snapchat-ghost"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-xl bg-slate-900 text-amber-400 hover:bg-amber-500 hover:text-black flex items-center justify-center transition-all">
+              <i class="fab fa-tiktok"></i>
+            </a>
+          </div>
+          <span class="text-[11px] text-slate-500 block">جميع الحقوق محفوظة © 2026</span>
+        </div>
+      </div>
+
+      <div class="pt-8 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <span>مداخن ومشويات الرياض | RIYADH SMOKE & GRILL</span>
+        <span>Built with Luxury Hospitality Precision by <strong class="text-amber-400">ABDO HOUSE</strong></span>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       7. FLOATING PERSISTENT VIP RESERVATION BUTTON (MOBILE & DESKTOP)
+       ========================================================================= -->
+  <div class="fixed left-1/2 -translate-x-1/2 z-40 flex items-center gap-3 floating-cta-container">
+    <button onclick="openReservationModal()" class="btn-gold py-3.5 px-6 rounded-full text-sm font-black shadow-2xl flex items-center gap-2.5 float-btn-pulse whitespace-nowrap active:scale-95 transition-transform">
+      <i class="fas fa-crown text-base text-black"></i>
+      <span data-i18n="navReserve">حجز طاولة VIP | Reserve a Table</span>
+    </button>
+  </div>
+
+  <!-- =========================================================================
+       8. SEVENROOMS-STYLE VIP RESERVATION MODAL WIZARD
+       ========================================================================= -->
+  <div id="reservation-modal" class="modal-overlay fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-6 bg-black/85 backdrop-blur-xl">
+    <div class="modal-box glass-modal w-full max-w-4xl max-h-[92dvh] sm:max-h-[90dvh] flex flex-col rounded-3xl overflow-hidden shadow-2xl border border-amber-400/40">
+      
+      <!-- Modal Header -->
+      <div class="p-4 sm:p-6 border-b border-white/10 flex items-center justify-between bg-slate-950/80">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center border border-amber-400/30 flex-shrink-0">
+            <i class="fas fa-crown"></i>
+          </div>
+          <div>
+            <h3 class="text-sm sm:text-lg font-bold text-white leading-tight" data-i18n="modalTitle">نظام حجز الطاولات الملكي | SevenRooms VIP Engine</h3>
+            <span class="text-[11px] sm:text-xs text-amber-400 font-medium block mt-0.5">مداخن ومشويات الرياض • تأكيد واتساب كونسيرج فوري</span>
+          </div>
+        </div>
+        <button onclick="closeReservationModal()" class="w-9 h-9 rounded-full bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700 flex items-center justify-center transition-colors flex-shrink-0">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <!-- Step Navigation Tabs -->
+      <div class="p-2 sm:p-4 bg-slate-900/60 border-b border-white/5 flex gap-2 overflow-x-auto text-xs sm:text-sm no-scrollbar">
+        <div id="step-tab-1" class="flex-1 py-3 px-3 text-center rounded-xl bg-amber-500/20 border border-amber-400 text-amber-300 font-bold whitespace-nowrap cursor-pointer" onclick="goToStep(1)">
+          <span data-i18n="step1Tab">1. الموعد والضيوف</span>
+        </div>
+        <div id="step-tab-2" class="flex-1 py-3 px-3 text-center rounded-xl bg-slate-900/50 border border-white/5 text-slate-400 whitespace-nowrap cursor-pointer" onclick="goToStep(2)">
+          <span data-i18n="step2Tab">2. المنطقة والمخطط</span>
+        </div>
+        <div id="step-tab-3" class="flex-1 py-3 px-3 text-center rounded-xl bg-slate-900/50 border border-white/5 text-slate-400 whitespace-nowrap cursor-pointer" onclick="goToStep(3)">
+          <span data-i18n="step3Tab">3. المناسبة والإضافات</span>
+        </div>
+        <div id="step-tab-4" class="flex-1 py-3 px-3 text-center rounded-xl bg-slate-900/50 border border-white/5 text-slate-400 whitespace-nowrap cursor-pointer" onclick="goToStep(4)">
+          <span data-i18n="step4Tab">4. بيانات الضيف والتأكيد</span>
+        </div>
+      </div>
+
+      <!-- Modal Body (Scrollable Multi-Step Container) -->
+      <div class="flex-1 overflow-y-auto p-4 sm:p-8 space-y-8">
+        
+        <!-- ================= STEP 1: PARTY SIZE, DATE & TIMESLOT ================= -->
+        <div id="step-content-1" class="space-y-6">
+          <div>
+            <h4 class="text-xl font-bold text-white mb-1" data-i18n="step1Title">اختر عدد الضيوف وتوقيت الزيارة</h4>
+            <p class="text-xs sm:text-sm text-slate-400" data-i18n="step1Subtitle">نرجو تحديد عدد المقاعد والفترة المفضلة لضمان أرقى معايير الاستقبال</p>
+          </div>
+
+          <!-- Party Size Pills -->
+          <div>
+            <label class="block text-xs font-bold text-amber-300 mb-3" data-i18n="guestsLabel">عدد المقاعد المطلوبة:</label>
+            <div class="flex flex-wrap gap-2 sm:gap-3">
+              <button data-size="1" class="party-size-pill px-5 py-3 rounded-xl bg-slate-800/80 border border-white/10 text-slate-300 font-medium hover:border-amber-400/50 transition-all">1 ضيف</button>
+              <button data-size="2" class="party-size-pill px-5 py-3 rounded-xl bg-slate-800/80 border border-white/10 text-slate-300 font-medium hover:border-amber-400/50 transition-all">2 ضيوف</button>
+              <button data-size="3" class="party-size-pill px-5 py-3 rounded-xl bg-slate-800/80 border border-white/10 text-slate-300 font-medium hover:border-amber-400/50 transition-all">3 ضيوف</button>
+              <button data-size="4" class="party-size-pill px-5 py-3 rounded-xl bg-gradient-to-r from-amber-400 to-amber-600 text-black font-extrabold shadow-lg shadow-amber-500/30 scale-105 transition-all">4 ضيوف</button>
+              <button data-size="5" class="party-size-pill px-5 py-3 rounded-xl bg-slate-800/80 border border-white/10 text-slate-300 font-medium hover:border-amber-400/50 transition-all">5 ضيوف</button>
+              <button data-size="6" class="party-size-pill px-5 py-3 rounded-xl bg-slate-800/80 border border-white/10 text-slate-300 font-medium hover:border-amber-400/50 transition-all">6 ضيوف</button>
+              <button data-size="8" class="party-size-pill px-5 py-3 rounded-xl bg-slate-800/80 border border-white/10 text-slate-300 font-medium hover:border-amber-400/50 transition-all">8 ضيوف</button>
+              <button data-size="10" class="party-size-pill px-5 py-3 rounded-xl bg-slate-800/80 border border-white/10 text-slate-300 font-medium hover:border-amber-400/50 transition-all">10 ضيوف</button>
+              <button data-size="12" class="party-size-pill px-5 py-3 rounded-xl bg-slate-800/80 border border-white/10 text-slate-300 font-medium hover:border-amber-400/50 transition-all">12+ VIP</button>
+            </div>
+          </div>
+
+          <!-- Dynamic Visual Date Picker Chips -->
+          <div>
+            <label class="block text-xs font-bold text-amber-300 mb-3" data-i18n="dateLabel">تاريخ الحجز:</label>
+            <div id="date-chips-container" class="flex gap-3 overflow-x-auto pb-2">
+              <!-- Rendered by app.js -->
+            </div>
+          </div>
+
+          <!-- Curated Dining Periods Cards -->
+          <div>
+            <label class="block text-xs font-bold text-amber-300 mb-3" data-i18n="periodLabel">فترة تناول الطعام:</label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              
+              <!-- Lunch -->
+              <div data-period="lunch" class="dining-period-card p-4 rounded-2xl bg-slate-800/60 border border-white/10 cursor-pointer hover:border-amber-400/50 transition-all">
+                <div class="flex items-center gap-2 text-amber-400 mb-1">
+                  <i class="fas fa-sun text-sm"></i>
+                  <span class="text-xs font-bold">غداء عمل</span>
+                </div>
+                <div class="text-[11px] text-slate-400">1:00 PM - 4:30 PM</div>
+              </div>
+
+              <!-- Sunset -->
+              <div data-period="sunset" class="dining-period-card p-4 rounded-2xl bg-slate-800/60 border border-white/10 cursor-pointer hover:border-amber-400/50 transition-all">
+                <div class="flex items-center gap-2 text-amber-400 mb-1">
+                  <i class="fas fa-cloud-sun text-sm"></i>
+                  <span class="text-xs font-bold">جلسة الغروب</span>
+                </div>
+                <div class="text-[11px] text-slate-400">5:00 PM - 7:00 PM</div>
+              </div>
+
+              <!-- Dinner (Default Selected) -->
+              <div data-period="dinner" class="dining-period-card p-4 rounded-2xl bg-amber-500/10 border border-amber-400 shadow-lg cursor-pointer transition-all">
+                <div class="flex items-center gap-2 text-amber-400 mb-1">
+                  <i class="fas fa-moon text-sm"></i>
+                  <span class="text-xs font-bold">عشاء فاخر</span>
+                </div>
+                <div class="text-[11px] text-slate-400">7:30 PM - 11:30 PM</div>
+              </div>
+
+              <!-- Late Night -->
+              <div data-period="latenight" class="dining-period-card p-4 rounded-2xl bg-slate-800/60 border border-white/10 cursor-pointer hover:border-amber-400/50 transition-all">
+                <div class="flex items-center gap-2 text-amber-400 mb-1">
+                  <i class="fas fa-fire text-sm"></i>
+                  <span class="text-xs font-bold">السهرة</span>
+                </div>
+                <div class="text-[11px] text-slate-400">12:00 AM - 2:00 AM</div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Exact Arrival Timeslot Chips -->
+          <div>
+            <label class="block text-xs font-bold text-amber-300 mb-3" data-i18n="timeLabel">اختر وقت الوصول الدقيق:</label>
+            <div id="time-slots-container" class="flex flex-wrap gap-2.5">
+              <!-- Rendered by app.js -->
+            </div>
+          </div>
+
+          <!-- Step 1 Footer Action -->
+          <div class="pt-4 flex justify-end">
+            <button onclick="goToStep(2)" class="btn-gold py-3.5 px-8 rounded-xl font-bold flex items-center gap-2 shadow-lg shadow-amber-500/20">
+              <span data-i18n="nextBtn">المتابعة للخطوة التالية</span>
+              <i class="fas fa-arrow-left text-xs"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- ================= STEP 2: SEATING ZONE & INTERACTIVE FLOOR MAP ================= -->
+        <div id="step-content-2" class="space-y-6" style="display: none;">
+          <div>
+            <h4 class="text-xl font-bold text-white mb-1" data-i18n="step2Title">اختر منطقة الجلوس وحدد طاولتك على المخطط التفاعلي</h4>
+            <p class="text-xs sm:text-sm text-slate-400" data-i18n="step2Subtitle">حدد منطقتك المفضلة وانقر على أي طاولة متاحة باللون الأخضر لاختيارها</p>
+          </div>
+
+          <!-- Zone Cards Grid -->
+          <div id="zone-cards-container" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Rendered by app.js -->
+          </div>
+
+          <!-- Floor Map Container -->
+          <div class="glass-panel p-5 rounded-3xl border border-white/10">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-white/10">
+              <div>
+                <h5 class="text-sm font-bold text-white flex items-center gap-2" data-i18n="floorMapTitle">
+                  <i class="fas fa-map text-amber-400"></i>
+                  <span>مخطط توزيع الطاولات الحي (Live Floor Map)</span>
+                </h5>
+                <span class="text-xs text-slate-400">انقر على الطاولة لاختيارها لموعد حجزك</span>
+              </div>
+
+              <!-- Legend -->
+              <div class="flex items-center gap-4 text-xs">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-3 h-3 rounded-full bg-emerald-500 shadow-sm shadow-emerald-500/50"></span>
+                  <span class="text-slate-300" data-i18n="availableLegend">متاح</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                  <span class="w-3 h-3 rounded-full bg-amber-400 shadow-sm shadow-amber-400/50"></span>
+                  <span class="text-slate-300" data-i18n="selectedLegend">محدد</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                  <span class="w-3 h-3 rounded-full bg-slate-700"></span>
+                  <span class="text-slate-500" data-i18n="reservedLegend">محجوز</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floor Map Grid (T-01 to T-18) -->
+            <div id="floor-map-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <!-- Rendered by app.js -->
+            </div>
+
+            <!-- Selected Table Badge -->
+            <div id="selected-table-badge-info" class="mt-6">
+              <!-- Rendered by app.js -->
+            </div>
+          </div>
+
+          <!-- Step 2 Navigation Actions -->
+          <div class="pt-4 flex items-center justify-between">
+            <button onclick="goToStep(1)" class="py-3 px-6 rounded-xl bg-slate-800 text-slate-300 hover:text-white font-semibold transition-colors flex items-center gap-2">
+              <i class="fas fa-arrow-right text-xs"></i>
+              <span data-i18n="backBtn">الرجوع للخطوة السابقة</span>
+            </button>
+            <button onclick="goToStep(3)" class="btn-gold py-3.5 px-8 rounded-xl font-bold flex items-center gap-2 shadow-lg shadow-amber-500/20">
+              <span data-i18n="nextBtn">المتابعة للخطوة التالية</span>
+              <i class="fas fa-arrow-left text-xs"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- ================= STEP 3: OCCASION & BESPOKE AMENITIES ================= -->
+        <div id="step-content-3" class="space-y-6" style="display: none;">
+          <div>
+            <h4 class="text-xl font-bold text-white mb-1" data-i18n="step3Title">المناسبات الخاصة والخدمات الإضافية</h4>
+            <p class="text-xs sm:text-sm text-slate-400" data-i18n="step3Subtitle">خصص تجربتك لنصنع لك ذكرى لا تُنسى في أرقى أجواء الرياض</p>
+          </div>
+
+          <!-- Occasion Selection Pills -->
+          <div>
+            <label class="block text-xs font-bold text-amber-300 mb-3" data-i18n="occasionLabel">نوع المناسبة:</label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <button onclick="setOccasion('romantic')" data-occasion="romantic" class="occasion-pill p-3.5 rounded-2xl bg-slate-800/80 border border-white/10 text-slate-300 hover:border-amber-400/50 flex items-center gap-3 transition-all">
+                <i class="fas fa-heart text-rose-400"></i>
+                <span class="text-sm font-semibold" data-i18n="occRomantic">عشاء رومانسي / ذكرى زواج (Anniversary)</span>
+              </button>
+
+              <button onclick="setOccasion('birthday')" data-occasion="birthday" class="occasion-pill p-3.5 rounded-2xl bg-slate-800/80 border border-white/10 text-slate-300 hover:border-amber-400/50 flex items-center gap-3 transition-all">
+                <i class="fas fa-birthday-cake text-amber-400"></i>
+                <span class="text-sm font-semibold" data-i18n="occBirthday">احتفال عيد ميلاد (Birthday Celebration)</span>
+              </button>
+
+              <button onclick="setOccasion('business')" data-occasion="business" class="occasion-pill p-3.5 rounded-2xl bg-slate-800/80 border border-white/10 text-slate-300 hover:border-amber-400/50 flex items-center gap-3 transition-all">
+                <i class="fas fa-briefcase text-blue-400"></i>
+                <span class="text-sm font-semibold" data-i18n="occBusiness">عشاء عمل رسمي (Business Dinner)</span>
+              </button>
+
+              <button onclick="setOccasion('family')" data-occasion="family" class="occasion-pill p-3.5 rounded-2xl bg-slate-800/80 border border-white/10 text-slate-300 hover:border-amber-400/50 flex items-center gap-3 transition-all">
+                <i class="fas fa-users text-emerald-400"></i>
+                <span class="text-sm font-semibold" data-i18n="occFamily">اجتماع عائلي خاص (Family Gathering)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Add-on Amenities Checkboxes -->
+          <div>
+            <label class="block text-xs font-bold text-amber-300 mb-3" data-i18n="addonsLabel">خدمات الضيافة الملكية الإضافية:</label>
+            <div class="space-y-4">
+              
+              <!-- Celebration Cake -->
+              <div class="glass-panel p-4 rounded-2xl border border-white/10 space-y-3">
+                <label class="flex items-start gap-3 cursor-pointer">
+                  <input type="checkbox" id="addon-cake" class="w-5 h-5 mt-0.5 rounded text-amber-500 focus:ring-amber-400 bg-slate-900 border-white/20 cursor-pointer" />
+                  <div>
+                    <span class="text-sm font-bold text-white block" data-i18n="cakeOption">كيكة شوكولاتة فاخرة للاحتفال مع كتابة اسم الضيف (+120 ر.س)</span>
+                    <span class="text-xs text-slate-400">كيكة بلجيكية خاصة يتم تقديمها مع شموع الاحتفال بعد العشاء</span>
+                  </div>
+                </label>
+                <input type="text" id="cake-inscription" placeholder="الاسم أو العبارة المطلوبة على الكيكة..." class="w-full bg-slate-900 border border-white/10 rounded-xl p-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 hidden" data-i18n="cakePlaceholder" />
+              </div>
+
+              <!-- Flowers -->
+              <div class="glass-panel p-4 rounded-2xl border border-white/10">
+                <label class="flex items-start gap-3 cursor-pointer">
+                  <input type="checkbox" id="addon-flowers" class="w-5 h-5 mt-0.5 rounded text-amber-500 focus:ring-amber-400 bg-slate-900 border-white/20 cursor-pointer" />
+                  <div>
+                    <span class="text-sm font-bold text-white block" data-i18n="flowersOption">تنسيق باقة ورد طبيعي فاخرة على الطاولة (+180 ر.س)</span>
+                    <span class="text-xs text-slate-400">تنسيق راقي من الورود الطبيعية الهولندية يوضع على طاولتك قبل وصولك</span>
+                  </div>
+                </label>
+              </div>
+
+              <!-- Dietary Preferences -->
+              <div class="glass-panel p-4 rounded-2xl border border-white/10 space-y-2">
+                <label class="block text-xs font-bold text-slate-300" data-i18n="dietaryLabel">ملاحظات غذائية خاصة (حساسية جلوتين، قليل الصوديوم، استواء محدد):</label>
+                <textarea id="dietary-requests" rows="2" placeholder="أدخل أي تفضيلات أو حساسيات غذائية للضيوف..." class="w-full bg-slate-900 border border-white/10 rounded-xl p-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400" data-i18n="dietaryPlaceholder"></textarea>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Step 3 Navigation Actions -->
+          <div class="pt-4 flex items-center justify-between">
+            <button onclick="goToStep(2)" class="py-3 px-6 rounded-xl bg-slate-800 text-slate-300 hover:text-white font-semibold transition-colors flex items-center gap-2">
+              <i class="fas fa-arrow-right text-xs"></i>
+              <span data-i18n="backBtn">الرجوع للخطوة السابقة</span>
+            </button>
+            <button onclick="goToStep(4)" class="btn-gold py-3.5 px-8 rounded-xl font-bold flex items-center gap-2 shadow-lg shadow-amber-500/20">
+              <span data-i18n="nextBtn">المتابعة للخطوة التالية</span>
+              <i class="fas fa-arrow-left text-xs"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- ================= STEP 4: GUEST DETAILS & WHATSAPP DISPATCH ================= -->
+        <div id="step-content-4" class="space-y-6" style="display: none;">
+          <div>
+            <h4 class="text-xl font-bold text-white mb-1" data-i18n="step4Title">تفاصيل الضيف والتأكيد النهائي عبر الواتساب</h4>
+            <p class="text-xs sm:text-sm text-slate-400" data-i18n="step4Subtitle">سيتم تجهيز استقبالك فوراً وإرسال إشعار التأكيد المباشر للكونسيرج</p>
+          </div>
+
+          <!-- Live Summary Card -->
+          <div id="booking-summary-container">
+            <!-- Rendered by app.js -->
+          </div>
+
+          <!-- Guest Inputs -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-amber-300 mb-2" data-i18n="nameLabel">الاسم الكريم للضيف الأساسي:</label>
+              <input type="text" id="guest-name" placeholder="مثال: عبد العزيز الشمري" class="w-full bg-slate-900 border border-white/10 rounded-xl p-3.5 text-sm text-white focus:outline-none focus:border-amber-400" />
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-amber-300 mb-2" data-i18n="phoneLabel">رقم الجوال / الواتساب:</label>
+              <input type="tel" id="guest-phone" placeholder="05xxxxxxxx" class="w-full bg-slate-900 border border-white/10 rounded-xl p-3.5 text-sm text-white focus:outline-none focus:border-amber-400" />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-2" data-i18n="notesLabel">ملاحظات خاصة للكونسيرج:</label>
+            <textarea id="guest-notes" rows="2" placeholder="أي طلبات خاصة بإطلالة المقعد أو الاستقبال..." class="w-full bg-slate-900 border border-white/10 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-amber-400" data-i18n="notesPlaceholder"></textarea>
+          </div>
+
+          <!-- Dress Code Policy Advisory -->
+          <div class="p-4 rounded-2xl bg-amber-500/10 border border-amber-400/30 flex items-start gap-3">
+            <i class="fas fa-info-circle text-amber-400 text-lg mt-0.5"></i>
+            <p class="text-xs text-amber-200/90 leading-relaxed font-medium" data-i18n="dressCodePolicy">
+              سياسة الزي المعتمد: رسمي أنيق (Smart Casual) • يُرجى تأكيد الحضور قبل الموعد بـ 15 دقيقة لضمان حجز الطاولة.
+            </p>
+          </div>
+
+          <!-- WhatsApp Dispatch CTA Button -->
+          <div class="pt-4 flex flex-col gap-3">
+            <button onclick="confirmVIPReservation()" class="w-full btn-gold py-4 px-8 rounded-2xl text-base font-extrabold flex items-center justify-center gap-3 shadow-2xl shadow-amber-500/30">
+              <i class="fab fa-whatsapp text-2xl text-black"></i>
+              <span data-i18n="confirmWhatsAppBtn">تأكيد الحجز الملكي عبر الواتساب</span>
+            </button>
+            <button onclick="goToStep(3)" class="w-full py-2.5 text-xs text-slate-400 hover:text-white transition-colors">
+              <span data-i18n="backBtn">الرجوع لتعديل البيانات</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       9. TAKEAWAY CART DRAWER (SLIDE-OVER)
+       ========================================================================= -->
+  <div id="cart-drawer" class="drawer-backdrop fixed inset-0 z-50 bg-black/80 backdrop-blur-md">
+    <div class="drawer-content fixed top-0 bottom-0 right-0 w-full max-w-md bg-slate-950 border-l border-amber-400/30 flex flex-col p-6 shadow-2xl">
+      
+      <!-- Drawer Header -->
+      <div class="flex items-center justify-between pb-4 border-b border-white/10">
+        <div class="flex items-center gap-2 text-white font-bold text-lg">
+          <i class="fas fa-shopping-bag text-amber-400"></i>
+          <span data-i18n="cartTitle">سلة الطلبات الخارجية (Takeaway)</span>
+        </div>
+        <button onclick="toggleCart(false)" class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <!-- Empty State -->
+      <div id="cart-empty-state" class="flex-1 flex flex-col items-center justify-center text-center p-6 space-y-4">
+        <div class="w-16 h-16 rounded-full bg-slate-900 flex items-center justify-center text-slate-500 text-2xl">
+          <i class="fas fa-utensils"></i>
+        </div>
+        <p class="text-sm text-slate-400" data-i18n="cartEmpty">سلة طلباتك فارغة حالياً. أضف أطباقك المفضلة من القائمة!</p>
+        <button onclick="toggleCart(false)" class="py-2.5 px-6 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-300 text-xs font-bold transition-all">
+          تصفح القائمة
+        </button>
+      </div>
+
+      <!-- Items List -->
+      <div id="cart-items-container" class="flex-1 overflow-y-auto py-4 space-y-3">
+        <!-- Rendered by app.js -->
+      </div>
+
+      <!-- Drawer Footer & Checkout -->
+      <div id="cart-footer" class="pt-4 border-t border-white/10 space-y-3 drawer-footer-safe" style="display: none;">
+        <div class="flex items-center justify-between text-xs text-slate-400">
+          <span data-i18n="subtotal">المجموع الفرعي:</span>
+          <span id="cart-subtotal" class="font-bold text-white">0 ر.س</span>
+        </div>
+        <div class="flex items-center justify-between text-xs text-slate-400">
+          <span data-i18n="vat">ضريبة القيمة المضافة (15%):</span>
+          <span id="cart-vat" class="font-bold text-white">0 ر.س</span>
+        </div>
+        <div class="flex items-center justify-between text-base font-black text-amber-400 pt-2 border-t border-white/5">
+          <span data-i18n="grandTotal">المبلغ الإجمالي:</span>
+          <span id="cart-grand-total">0 ر.س</span>
+        </div>
+
+        <button onclick="checkoutTakeawayWhatsApp()" class="w-full btn-gold py-3.5 px-4 rounded-xl text-sm font-bold flex items-center justify-center gap-2 shadow-xl shadow-amber-500/20">
+          <i class="fab fa-whatsapp text-lg"></i>
+          <span data-i18n="checkoutBtn">إتمام الطلب عبر الواتساب</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Floating Live Reservation Ticker (Social Proof Toast) -->
+  <div id="live-reservation-ticker"></div>
+
+  <!-- Main JavaScript File -->
+  <script src="app.js"></script>
+</body>
+</html>
