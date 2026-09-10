@@ -182,11 +182,11 @@ body {
   animation: emeraldPulse 2.5s infinite;
 }
 
-/* Modal and Drawer transitions */
+/* Modal and Drawer transitions - Instantaneous & Lightweight */
 .drawer-backdrop {
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.35s ease;
+  transition: opacity 0.22s ease;
 }
 
 .drawer-backdrop.active {
@@ -196,7 +196,11 @@ body {
 
 .drawer-content {
   transform: translateX(100%);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[dir="ltr"] .drawer-content {
+  transform: translateX(100%);
 }
 
 .drawer-backdrop.active .drawer-content {
@@ -207,7 +211,7 @@ body {
 .modal-overlay {
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease;
 }
 
 .modal-overlay.active {
@@ -216,9 +220,9 @@ body {
 }
 
 .modal-box {
-  transform: scale(0.94) translateY(20px);
+  transform: scale(0.97) translateY(8px);
   opacity: 0;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
 }
 
 .modal-overlay.active .modal-box {
@@ -289,18 +293,181 @@ body {
   touch-action: manipulation;
 }
 
-/* Force GPU hardware acceleration on main moving elements */
+/* Force GPU acceleration on main scrolling layer, interactive drawers, and animated UI */
+html,
+body,
 header,
+main,
+section,
 .modal-overlay,
 .modal-box,
 .drawer-content,
+.drawer-backdrop,
+#cart-drawer,
+#reservation-modal,
 .floor-table,
 .menu-card-elevate,
 .floating-cta-container,
-#live-reservation-ticker {
+#live-reservation-ticker,
+.party-size-pill,
+.occasion-pill,
+.dining-period-card,
+.date-chip,
+.time-slot-btn,
+.zone-card {
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
   will-change: transform;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ==========================================================================
+   PART 3: PURE CSS INTERACTIVE SELECTORS (<16ms ZERO-STUTTER FEEDBACK)
+   ========================================================================== */
+
+.party-size-pill,
+.date-chip,
+.dining-period-card,
+.time-slot-btn,
+.zone-card,
+.floor-table,
+.occasion-pill {
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.15s ease, 
+              background-color 0.15s ease, 
+              box-shadow 0.15s ease,
+              color 0.15s ease;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+/* Occasion Pills */
+.occasion-pill {
+  background: #12141c;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+}
+
+.occasion-pill:hover {
+  border-color: rgba(212, 175, 55, 0.45);
+}
+
+.occasion-pill.selected {
+  background: var(--gold-gradient) !important;
+  color: #08090c !important;
+  border-color: #fce09b !important;
+  font-weight: 800 !important;
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35) !important;
+  transform: scale(1.02) translateZ(0) !important;
+}
+
+.occasion-pill.selected i {
+  color: #08090c !important;
+}
+
+.occasion-pill.selected span {
+  color: #08090c !important;
+  font-weight: 800 !important;
+}
+
+/* Party Size Pills */
+.party-size-pill {
+  background: #12141c;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+}
+
+.party-size-pill:hover {
+  border-color: rgba(212, 175, 55, 0.45);
+}
+
+.party-size-pill.selected {
+  background: var(--gold-gradient) !important;
+  color: #08090c !important;
+  border-color: #fce09b !important;
+  font-weight: 800 !important;
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35) !important;
+  transform: scale(1.05) translateZ(0) !important;
+}
+
+/* Date Chips */
+.date-chip {
+  background: #12141c;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+}
+
+.date-chip:hover {
+  border-color: rgba(212, 175, 55, 0.45);
+}
+
+.date-chip.selected {
+  background: var(--gold-gradient) !important;
+  color: #08090c !important;
+  border-color: #fce09b !important;
+  font-weight: 800 !important;
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35) !important;
+  transform: scale(1.05) translateZ(0) !important;
+}
+
+.date-chip.selected * {
+  color: #08090c !important;
+}
+
+/* Time Slot Buttons */
+.time-slot-btn {
+  background: #12141c;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+}
+
+.time-slot-btn:hover {
+  border-color: rgba(212, 175, 55, 0.45);
+}
+
+.time-slot-btn.selected {
+  background: var(--gold-gradient) !important;
+  color: #08090c !important;
+  border-color: #fce09b !important;
+  font-weight: 800 !important;
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35) !important;
+  transform: scale(1.05) translateZ(0) !important;
+}
+
+/* Dining Period Cards */
+.dining-period-card {
+  background: #12141c;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.dining-period-card:hover {
+  border-color: rgba(212, 175, 55, 0.45);
+}
+
+.dining-period-card.selected {
+  border-color: var(--gold-primary) !important;
+  background: rgba(212, 175, 55, 0.12) !important;
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2) !important;
+  transform: translateY(-2px) translateZ(0) !important;
+}
+
+/* Zone Cards */
+.zone-card {
+  background: #12141c;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.zone-card:hover {
+  border-color: rgba(212, 175, 55, 0.45);
+}
+
+.zone-card.selected {
+  border-color: var(--gold-primary) !important;
+  background: rgba(212, 175, 55, 0.12) !important;
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.25) !important;
+  outline: 2px solid rgba(212, 175, 55, 0.5) !important;
 }
 
 /* Safe Area Insets for Modern Smartphones (iPhone home indicator) */

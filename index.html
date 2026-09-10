@@ -54,12 +54,12 @@
        1. LUXURY NAVIGATION BAR
        ========================================================================= -->
   <header class="sticky top-0 z-40 bg-[#08090C]/95 border-b border-white/10 transition-all">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-20 sm:h-24 flex items-center justify-between">
       
       <!-- Brand Identity & Symmetrical Vector Logo -->
-      <a href="#" class="flex items-center gap-3.5 group">
+      <a href="#" class="flex items-center gap-2.5 sm:gap-3.5 group min-w-0">
         <!-- Autonomous Luxury SVG Logo -->
-        <div class="relative w-14 h-14 flex items-center justify-center flex-shrink-0">
+        <div class="relative w-11 h-11 sm:w-14 sm:h-14 flex items-center justify-center flex-shrink-0">
           <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-[0_0_12px_rgba(212,175,55,0.45)]" fill="none" xmlns="http://www.w3.org/2000/svg">
             <!-- Gradients -->
             <defs>
@@ -98,14 +98,17 @@
           </svg>
         </div>
 
-        <div class="flex flex-col">
-          <span class="font-cinzel text-lg sm:text-xl font-black tracking-wider text-white group-hover:text-amber-300 transition-colors leading-none">
-            RIYADH SMOKE & GRILL
-          </span>
-          <span class="text-xs sm:text-sm font-bold text-amber-400 mt-1 tracking-wide">
+        <div class="flex flex-col min-w-0 justify-center">
+          <!-- Primary: مداخن ومشويات الرياض (Prominent, High Contrast) -->
+          <span class="text-sm sm:text-base md:text-lg font-black text-amber-400 group-hover:text-amber-300 transition-colors leading-tight truncate">
             مداخن ومشويات الرياض
           </span>
-          <span class="text-[10px] text-slate-400 tracking-wider font-light mt-0.5">
+          <!-- Secondary: RIYADH SMOKE & GRILL (Refined Tracked Uppercase Subtitle) -->
+          <span class="font-cinzel text-[10px] sm:text-xs font-bold tracking-widest text-slate-100 uppercase leading-none mt-0.5 truncate">
+            RIYADH SMOKE & GRILL
+          </span>
+          <!-- Agency Micro-Attribution Tag -->
+          <span class="text-[9px] text-slate-400 tracking-wider font-light mt-0.5 truncate hidden xs:block">
             Engineered by <strong class="text-amber-300 font-semibold">ABDO HOUSE</strong>
           </span>
         </div>
@@ -149,7 +152,7 @@
   <section id="hero" class="relative pt-12 pb-24 overflow-hidden">
     <!-- Dark Smoke & Fire Embers Backdrop -->
     <div class="absolute inset-0 -z-10 overflow-hidden">
-      <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1600&q=80" alt="Royal Smokehouse Ambiance" class="w-full h-full object-cover object-center opacity-25 filter brightness-50 contrast-125" loading="eager" decoding="async" />
+      <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1600&q=80" alt="Royal Smokehouse Ambiance" width="1600" height="900" class="w-full h-full object-cover object-center opacity-25 filter brightness-50 contrast-125 aspect-video" loading="eager" decoding="async" />
       <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/85 to-obsidian/70"></div>
     </div>
 
@@ -302,8 +305,8 @@
         
         <!-- Zone A: Main Dining Hall -->
         <div class="glass-panel rounded-3xl overflow-hidden border border-white/10 hover:border-amber-400/50 transition-all duration-300 group flex flex-col justify-between">
-          <div class="relative h-64 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80" alt="Main Dining Hall" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async" />
+          <div class="relative h-64 overflow-hidden aspect-[16/10]">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80" alt="Main Dining Hall" width="800" height="533" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async" />
             <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-black/30"></div>
             <span class="absolute top-4 right-4 bg-black/85 border border-amber-400/30 text-amber-300 text-xs px-3 py-1 rounded-full font-bold">
               الصالة الرئيسية الملكية
@@ -331,8 +334,8 @@
 
         <!-- Zone B: Panoramic Terrace -->
         <div class="glass-panel rounded-3xl overflow-hidden border border-white/10 hover:border-amber-400/50 transition-all duration-300 group flex flex-col justify-between">
-          <div class="relative h-64 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=800&q=80" alt="Panoramic Terrace" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async" />
+          <div class="relative h-64 overflow-hidden aspect-[16/10]">
+            <img src="https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=800&q=80" alt="Panoramic Terrace" width="800" height="533" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async" />
             <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-black/30"></div>
             <span class="absolute top-4 right-4 bg-black/85 border border-amber-400/30 text-amber-300 text-xs px-3 py-1 rounded-full font-bold">
               التراس الخارجي المفتوح
@@ -363,8 +366,8 @@
           <div class="absolute top-0 right-0 left-0 bg-gradient-to-r from-amber-500 to-amber-600 text-black text-center text-xs font-black py-1 z-10">
             👑 التجربة الأكثر خصوصية وفخامة
           </div>
-          <div class="relative h-64 overflow-hidden pt-6">
-            <img src="https://images.unsplash.com/photo-1578474846511-04ba529f0b88?w=800&q=80" alt="Private VIP Cabana" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async" />
+          <div class="relative h-64 overflow-hidden pt-6 aspect-[16/10]">
+            <img src="https://images.unsplash.com/photo-1578474846511-04ba529f0b88?w=800&q=80" alt="Private VIP Cabana" width="800" height="533" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async" />
             <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-black/30"></div>
             <span class="absolute top-10 right-4 bg-black/85 border border-amber-400 text-amber-300 text-xs px-3 py-1 rounded-full font-bold">
               كابينة VIP خاصة (+150 ر.س)
@@ -670,16 +673,16 @@
           <!-- Party Size Pills -->
           <div>
             <label class="block text-xs font-bold text-amber-300 mb-3" data-i18n="guestsLabel">عدد المقاعد المطلوبة:</label>
-            <div class="flex flex-wrap gap-2 sm:gap-3">
-              <button data-size="1" class="party-size-pill px-5 py-3 rounded-xl bg-slate-800/80 border border-white/10 text-slate-300 font-medium hover:border-amber-400/50 transition-all">1 ضيف</button>
-              <button data-size="2" class="party-size-pill px-5 py-3 rounded-xl bg-slate-800/80 border border-white/10 text-slate-300 font-medium hover:border-amber-400/50 transition-all">2 ضيوف</button>
-              <button data-size="3" class="party-size-pill px-5 py-3 rounded-xl bg-slate-800/80 border border-white/10 text-slate-300 font-medium hover:border-amber-400/50 transition-all">3 ضيوف</button>
-              <button data-size="4" class="party-size-pill px-5 py-3 rounded-xl bg-gradient-to-r from-amber-400 to-amber-600 text-black font-extrabold shadow-lg shadow-amber-500/30 scale-105 transition-all">4 ضيوف</button>
-              <button data-size="5" class="party-size-pill px-5 py-3 rounded-xl bg-slate-800/80 border border-white/10 text-slate-300 font-medium hover:border-amber-400/50 transition-all">5 ضيوف</button>
-              <button data-size="6" class="party-size-pill px-5 py-3 rounded-xl bg-slate-800/80 border border-white/10 text-slate-300 font-medium hover:border-amber-400/50 transition-all">6 ضيوف</button>
-              <button data-size="8" class="party-size-pill px-5 py-3 rounded-xl bg-slate-800/80 border border-white/10 text-slate-300 font-medium hover:border-amber-400/50 transition-all">8 ضيوف</button>
-              <button data-size="10" class="party-size-pill px-5 py-3 rounded-xl bg-slate-800/80 border border-white/10 text-slate-300 font-medium hover:border-amber-400/50 transition-all">10 ضيوف</button>
-              <button data-size="12" class="party-size-pill px-5 py-3 rounded-xl bg-slate-800/80 border border-white/10 text-slate-300 font-medium hover:border-amber-400/50 transition-all">12+ VIP</button>
+            <div class="flex flex-wrap gap-2 sm:gap-2.5">
+              <button type="button" data-size="1" onclick="setPartySize(1)" class="party-size-pill w-auto min-w-fit px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center whitespace-nowrap">1 ضيف</button>
+              <button type="button" data-size="2" onclick="setPartySize(2)" class="party-size-pill w-auto min-w-fit px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center whitespace-nowrap">2 ضيوف</button>
+              <button type="button" data-size="3" onclick="setPartySize(3)" class="party-size-pill w-auto min-w-fit px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center whitespace-nowrap">3 ضيوف</button>
+              <button type="button" data-size="4" onclick="setPartySize(4)" class="party-size-pill selected w-auto min-w-fit px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center whitespace-nowrap">4 ضيوف</button>
+              <button type="button" data-size="5" onclick="setPartySize(5)" class="party-size-pill w-auto min-w-fit px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center whitespace-nowrap">5 ضيوف</button>
+              <button type="button" data-size="6" onclick="setPartySize(6)" class="party-size-pill w-auto min-w-fit px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center whitespace-nowrap">6 ضيوف</button>
+              <button type="button" data-size="8" onclick="setPartySize(8)" class="party-size-pill w-auto min-w-fit px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center whitespace-nowrap">8 ضيوف</button>
+              <button type="button" data-size="10" onclick="setPartySize(10)" class="party-size-pill w-auto min-w-fit px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center whitespace-nowrap">10 ضيوف</button>
+              <button type="button" data-size="12" onclick="setPartySize(12)" class="party-size-pill w-auto min-w-fit px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center whitespace-nowrap">12+ VIP</button>
             </div>
           </div>
 
@@ -826,25 +829,25 @@
           <!-- Occasion Selection Pills -->
           <div>
             <label class="block text-xs font-bold text-amber-300 mb-3" data-i18n="occasionLabel">نوع المناسبة:</label>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <button onclick="setOccasion('romantic')" data-occasion="romantic" class="occasion-pill p-3.5 rounded-2xl bg-slate-800/80 border border-white/10 text-slate-300 hover:border-amber-400/50 flex items-center gap-3 transition-all">
-                <i class="fas fa-heart text-rose-400"></i>
-                <span class="text-sm font-semibold" data-i18n="occRomantic">عشاء رومانسي / ذكرى زواج (Anniversary)</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
+              <button type="button" onclick="setOccasion('romantic')" data-occasion="romantic" class="occasion-pill w-auto min-w-fit p-3.5 rounded-2xl flex items-center gap-3 transition-all">
+                <i class="fas fa-heart text-rose-400 text-lg flex-shrink-0"></i>
+                <span class="text-xs sm:text-sm font-semibold" data-i18n="occRomantic">عشاء رومانسي / ذكرى زواج (Anniversary)</span>
               </button>
 
-              <button onclick="setOccasion('birthday')" data-occasion="birthday" class="occasion-pill p-3.5 rounded-2xl bg-slate-800/80 border border-white/10 text-slate-300 hover:border-amber-400/50 flex items-center gap-3 transition-all">
-                <i class="fas fa-birthday-cake text-amber-400"></i>
-                <span class="text-sm font-semibold" data-i18n="occBirthday">احتفال عيد ميلاد (Birthday Celebration)</span>
+              <button type="button" onclick="setOccasion('birthday')" data-occasion="birthday" class="occasion-pill w-auto min-w-fit p-3.5 rounded-2xl flex items-center gap-3 transition-all">
+                <i class="fas fa-birthday-cake text-amber-400 text-lg flex-shrink-0"></i>
+                <span class="text-xs sm:text-sm font-semibold" data-i18n="occBirthday">احتفال عيد ميلاد (Birthday Celebration)</span>
               </button>
 
-              <button onclick="setOccasion('business')" data-occasion="business" class="occasion-pill p-3.5 rounded-2xl bg-slate-800/80 border border-white/10 text-slate-300 hover:border-amber-400/50 flex items-center gap-3 transition-all">
-                <i class="fas fa-briefcase text-blue-400"></i>
-                <span class="text-sm font-semibold" data-i18n="occBusiness">عشاء عمل رسمي (Business Dinner)</span>
+              <button type="button" onclick="setOccasion('business')" data-occasion="business" class="occasion-pill w-auto min-w-fit p-3.5 rounded-2xl flex items-center gap-3 transition-all">
+                <i class="fas fa-briefcase text-blue-400 text-lg flex-shrink-0"></i>
+                <span class="text-xs sm:text-sm font-semibold" data-i18n="occBusiness">عشاء عمل رسمي (Business Dinner)</span>
               </button>
 
-              <button onclick="setOccasion('family')" data-occasion="family" class="occasion-pill p-3.5 rounded-2xl bg-slate-800/80 border border-white/10 text-slate-300 hover:border-amber-400/50 flex items-center gap-3 transition-all">
-                <i class="fas fa-users text-emerald-400"></i>
-                <span class="text-sm font-semibold" data-i18n="occFamily">اجتماع عائلي خاص (Family Gathering)</span>
+              <button type="button" onclick="setOccasion('family')" data-occasion="family" class="occasion-pill w-auto min-w-fit p-3.5 rounded-2xl flex items-center gap-3 transition-all">
+                <i class="fas fa-users text-emerald-400 text-lg flex-shrink-0"></i>
+                <span class="text-xs sm:text-sm font-semibold" data-i18n="occFamily">اجتماع عائلي خاص (Family Gathering)</span>
               </button>
             </div>
           </div>

@@ -567,8 +567,8 @@ function renderMenu() {
 
     return `
       <div class="glass-panel rounded-2xl overflow-hidden flex flex-col group menu-card-elevate ${isBestSeller ? 'bestseller-ember-glow border-amber-400/60' : 'hover:border-amber-400/40'}">
-        <div class="relative h-56 w-full overflow-hidden bg-slate-900">
-          <img src="${item.image}" alt="${title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
+        <div class="relative h-56 w-full overflow-hidden bg-slate-900 aspect-[16/10]">
+          <img src="${item.image}" alt="${title}" width="800" height="500" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none"></div>
           <span class="absolute top-3 right-3 ${isBestSeller ? 'bg-amber-500 text-black font-extrabold' : 'bg-slate-900/90 text-amber-300'} text-xs px-3 py-1 rounded-full border border-amber-400/30 shadow-md">
             ${isBestSeller ? '🔥 ' : ''}${badge}
@@ -682,7 +682,7 @@ function renderCart() {
     const itemTotal = item.price * item.quantity;
     return `
       <div class="flex items-center justify-between p-3.5 bg-slate-900/80 rounded-xl border border-white/5 gap-3">
-        <img src="${item.image}" alt="${title}" class="w-16 h-16 rounded-lg object-cover border border-amber-400/20" />
+        <img src="${item.image}" alt="${title}" width="64" height="64" class="w-16 h-16 rounded-lg object-cover border border-amber-400/20 aspect-square" loading="lazy" decoding="async" />
         <div class="flex-1 min-w-0">
           <h4 class="text-sm font-semibold text-white truncate">${title}</h4>
           <span class="text-xs text-amber-400 font-bold">${item.price} ${sar}</span>
@@ -821,11 +821,7 @@ function setPartySize(size) {
   bookingState.partySize = size;
   document.querySelectorAll(".party-size-pill").forEach(pill => {
     const pSize = parseInt(pill.getAttribute("data-size"));
-    if (pSize === size) {
-      pill.className = "party-size-pill px-5 py-3 rounded-xl bg-gradient-to-r from-amber-400 to-amber-600 text-black font-extrabold shadow-lg shadow-amber-500/30 scale-105 transition-all";
-    } else {
-      pill.className = "party-size-pill px-5 py-3 rounded-xl bg-slate-800/80 border border-white/10 text-slate-300 font-medium hover:border-amber-400/50 transition-all";
-    }
+    pill.classList.toggle("selected", pSize === size);
   });
 }
 
@@ -850,15 +846,13 @@ function renderDateChips() {
     const isSelected = bookingState.selectedDate === dateStr;
 
     html += `
-      <button onclick="selectBookingDate('${dateStr}')" class="min-w-[85px] p-3 rounded-2xl flex flex-col items-center justify-center border transition-all ${
-        isSelected 
-          ? 'bg-amber-500 text-black font-bold border-amber-300 shadow-xl shadow-amber-500/20 scale-105' 
-          : 'bg-slate-800/80 text-slate-300 border-white/10 hover:border-amber-400/50'
+      <button type="button" data-date="${dateStr}" onclick="selectBookingDate('${dateStr}')" class="date-chip w-auto min-w-[76px] sm:min-w-[84px] px-3 py-2.5 rounded-2xl flex flex-col items-center justify-center border transition-all ${
+        isSelected ? 'selected' : ''
       }">
-        <span class="text-xs uppercase tracking-wider mb-1 opacity-80">${i === 0 ? (currentLang === 'ar' ? 'اليوم' : 'Today') : dayName}</span>
-        <span class="text-xl font-black">${dayNum}</span>
-        <span class="text-[11px] opacity-75">${monthName}</span>
-        ${isWeekend ? `<span class="mt-1 text-[10px] px-1.5 py-0.5 rounded ${isSelected ? 'bg-black/20 text-black' : 'bg-emerald-500/20 text-emerald-400 font-bold'}">${currentLang === 'ar' ? 'ويكند' : 'Peak'}</span>` : ''}
+        <span class="text-[11px] uppercase tracking-wider mb-1 opacity-80">${i === 0 ? (currentLang === 'ar' ? 'اليوم' : 'Today') : dayName}</span>
+        <span class="text-lg sm:text-xl font-black">${dayNum}</span>
+        <span class="text-[10px] opacity-75">${monthName}</span>
+        ${isWeekend ? `<span class="mt-1 text-[9px] px-1.5 py-0.5 rounded ${isSelected ? 'bg-black/20 text-black' : 'bg-emerald-500/20 text-emerald-400 font-bold'}">${currentLang === 'ar' ? 'ويكند' : 'Peak'}</span>` : ''}
       </button>
     `;
   }
@@ -867,20 +861,22 @@ function renderDateChips() {
 
 function selectBookingDate(dateStr) {
   bookingState.selectedDate = dateStr;
-  renderDateChips();
+  const chips = document.querySelectorAll(".date-chip");
+  if (chips.length > 0) {
+    chips.forEach(chip => {
+      const d = chip.getAttribute("data-date");
+      chip.classList.toggle("selected", d === dateStr);
+    });
+  } else {
+    renderDateChips();
+  }
 }
 
 function selectDiningPeriod(periodId) {
   bookingState.period = periodId;
   document.querySelectorAll(".dining-period-card").forEach(card => {
     const id = card.getAttribute("data-period");
-    if (id === periodId) {
-      card.classList.add("border-amber-400", "bg-amber-500/10", "shadow-lg");
-      card.classList.remove("border-white/10", "bg-slate-800/60");
-    } else {
-      card.classList.remove("border-amber-400", "bg-amber-500/10", "shadow-lg");
-      card.classList.add("border-white/10", "bg-slate-800/60");
-    }
+    card.classList.toggle("selected", id === periodId);
   });
 
   // Pick first available slot in that period
@@ -899,10 +895,8 @@ function renderTimeSlots() {
   container.innerHTML = currentPeriod.slots.map(slot => {
     const isSelected = bookingState.timeSlot === slot;
     return `
-      <button onclick="selectTimeSlot('${slot}')" class="px-4 py-2.5 rounded-xl border text-sm font-semibold transition-all ${
-        isSelected
-          ? 'bg-gradient-to-r from-amber-400 to-amber-600 text-black border-amber-300 shadow-md shadow-amber-500/30 scale-105'
-          : 'bg-slate-800/80 text-slate-300 border-white/10 hover:border-amber-400/50'
+      <button type="button" data-slot="${slot}" onclick="selectTimeSlot('${slot}')" class="time-slot-btn w-auto min-w-fit px-4 py-2.5 rounded-xl border text-xs sm:text-sm font-semibold transition-all ${
+        isSelected ? 'selected' : ''
       }">
         <i class="far fa-clock mr-1 text-xs"></i> ${slot}
       </button>
@@ -912,7 +906,15 @@ function renderTimeSlots() {
 
 function selectTimeSlot(slot) {
   bookingState.timeSlot = slot;
-  renderTimeSlots();
+  const buttons = document.querySelectorAll(".time-slot-btn");
+  if (buttons.length > 0) {
+    buttons.forEach(btn => {
+      const s = btn.getAttribute("data-slot");
+      btn.classList.toggle("selected", s === slot);
+    });
+  } else {
+    renderTimeSlots();
+  }
 }
 
 // Step 2: Seating Zone & Floor Map
@@ -927,22 +929,20 @@ function renderZoneCards() {
     const tag = currentLang === "ar" ? zone.tag_ar : zone.tag_en;
 
     return `
-      <div onclick="selectZone('${zone.id}')" class="cursor-pointer rounded-2xl overflow-hidden border transition-all duration-300 ${
-        isSelected
-          ? 'border-amber-400 bg-amber-500/10 shadow-xl shadow-amber-500/10 ring-2 ring-amber-400/40'
-          : 'border-white/10 bg-slate-900/70 hover:border-white/20'
+      <div data-zone-id="${zone.id}" onclick="selectZone('${zone.id}')" class="zone-card cursor-pointer rounded-2xl overflow-hidden border transition-all duration-300 ${
+        isSelected ? 'selected' : ''
       }">
-        <div class="h-32 w-full relative overflow-hidden">
-          <img src="${zone.image}" alt="${name}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-          <span class="absolute top-2.5 right-2.5 bg-black/70 backdrop-blur-md border border-amber-400/30 text-amber-300 text-xs px-2.5 py-1 rounded-full font-semibold">
+        <div class="h-32 w-full relative overflow-hidden aspect-[16/9]">
+          <img src="${zone.image}" alt="${name}" width="600" height="338" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy" decoding="async" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/85 to-transparent pointer-events-none"></div>
+          <span class="absolute top-2.5 right-2.5 bg-black/85 border border-amber-400/30 text-amber-300 text-xs px-2.5 py-1 rounded-full font-semibold">
             ${tag}
           </span>
         </div>
         <div class="p-4">
           <div class="flex items-center justify-between mb-1">
-            <h4 class="font-bold text-white text-base ${isSelected ? 'text-amber-300' : ''}">${name}</h4>
-            ${isSelected ? `<i class="fas fa-check-circle text-amber-400 text-lg"></i>` : ''}
+            <h4 class="zone-title font-bold text-white text-base ${isSelected ? 'text-amber-300' : ''}">${name}</h4>
+            <i class="zone-check fas fa-check-circle text-amber-400 text-lg ${isSelected ? '' : 'hidden'}"></i>
           </div>
           <p class="text-xs text-slate-400 leading-relaxed">${sub}</p>
         </div>
@@ -953,12 +953,26 @@ function renderZoneCards() {
 
 function selectZone(zoneId) {
   bookingState.zone = zoneId;
+  const cards = document.querySelectorAll(".zone-card");
+  if (cards.length > 0) {
+    cards.forEach(card => {
+      const zid = card.getAttribute("data-zone-id");
+      const isSelected = (zid === zoneId);
+      card.classList.toggle("selected", isSelected);
+      const title = card.querySelector(".zone-title");
+      const check = card.querySelector(".zone-check");
+      if (title) title.classList.toggle("text-amber-300", isSelected);
+      if (check) check.classList.toggle("hidden", !isSelected);
+    });
+  } else {
+    renderZoneCards();
+  }
+
   // Automatically select the first available table in this zone
   const firstAvailable = FLOOR_TABLES.find(t => t.zone === zoneId && t.status === "available");
   if (firstAvailable) {
     bookingState.tableId = firstAvailable.id;
   }
-  renderZoneCards();
   renderFloorMap();
   renderSelectedTableBadge();
 }
@@ -1114,13 +1128,7 @@ function setOccasion(occasionKey) {
   bookingState.occasion = occasionKey;
   document.querySelectorAll(".occasion-pill").forEach(pill => {
     const occ = pill.getAttribute("data-occasion");
-    if (occ === occasionKey) {
-      pill.classList.add("bg-amber-500", "text-black", "font-bold", "border-amber-300");
-      pill.classList.remove("bg-slate-800/80", "text-slate-300", "border-white/10");
-    } else {
-      pill.classList.remove("bg-amber-500", "text-black", "font-bold", "border-amber-300");
-      pill.classList.add("bg-slate-800/80", "text-slate-300", "border-white/10");
-    }
+    pill.classList.toggle("selected", occ === occasionKey);
   });
 }
 
@@ -1310,6 +1318,13 @@ document.addEventListener("DOMContentLoaded", () => {
   if (flowerCheck) {
     flowerCheck.addEventListener("change", e => toggleFlowersAddon(e.target.checked));
   }
+
+  // 60fps Mobile Performance: Global passive listeners for zero scroll-blocking overhead
+  try {
+    window.addEventListener("scroll", () => {}, { passive: true });
+    window.addEventListener("touchmove", () => {}, { passive: true });
+    window.addEventListener("touchstart", () => {}, { passive: true });
+  } catch (err) {}
 
   // Start floating live reservation ticker (Social proof)
   startLiveReservationTicker();
