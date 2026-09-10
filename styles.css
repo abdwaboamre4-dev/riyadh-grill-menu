@@ -117,46 +117,33 @@ body {
   box-shadow: 0 10px 25px rgba(212, 175, 55, 0.35);
 }
 
-/* Ambient glow background decorations */
+/* Ambient glow background decorations (static, GPU friendly) */
 .ambient-glow-gold {
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, rgba(8, 9, 12, 0) 70%);
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, rgba(8, 9, 12, 0) 70%);
 }
 
 .ambient-glow-emerald {
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, rgba(8, 9, 12, 0) 70%);
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.06) 0%, rgba(8, 9, 12, 0) 70%);
 }
 
-/* Smoke Overlay Animation */
-@keyframes smokeDrift {
-  0% { transform: translateY(0) scale(1); opacity: 0.15; }
-  50% { transform: translateY(-15px) scale(1.05); opacity: 0.25; }
-  100% { transform: translateY(0) scale(1); opacity: 0.15; }
-}
-
-.smoke-effect {
-  animation: smokeDrift 14s ease-in-out infinite alternate;
-}
-
-/* Glassmorphism surfaces */
+/* High-performance solid dark surfaces (No backdrop-filter lag on mobile) */
 .glass-panel {
-  background: rgba(21, 24, 34, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: #12141c;
   border: 1px solid rgba(212, 175, 55, 0.16);
 }
 
 .glass-modal {
-  background: rgba(13, 15, 22, 0.94);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: #0d0f16;
   border: 1px solid rgba(212, 175, 55, 0.28);
 }
 
 /* Interactive Table Floor Grid Elements */
 .floor-table {
-  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: transform 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
   position: relative;
   cursor: pointer;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 .floor-table.available {
@@ -167,15 +154,14 @@ body {
 .floor-table.available:hover {
   border-color: var(--emerald-primary);
   background: rgba(16, 185, 129, 0.18);
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.25);
+  transform: translateY(-2px) translateZ(0);
 }
 
 .floor-table.selected {
   border-color: var(--gold-primary) !important;
   background: rgba(212, 175, 55, 0.22) !important;
-  box-shadow: 0 0 25px rgba(212, 175, 55, 0.45) !important;
-  transform: scale(1.04);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.35) !important;
+  transform: scale(1.03) translateZ(0);
 }
 
 .floor-table.reserved {
@@ -257,13 +243,12 @@ body {
 }
 
 .toast {
-  background: rgba(18, 20, 28, 0.96);
+  background: #12141c;
   border: 1px solid var(--gold-primary);
-  backdrop-filter: blur(12px);
   color: #fff;
   padding: 14px 20px;
   border-radius: 12px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 15px rgba(212, 175, 55, 0.2);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 15px rgba(212, 175, 55, 0.2);
   display: flex;
   align-items: center;
   gap: 12px;
@@ -281,19 +266,13 @@ body {
   to { opacity: 0; transform: translateY(20px) scale(0.95); }
 }
 
-/* Floating Reserve Button Pulse */
+/* Floating Reserve Button Luxury Shadow */
 .float-btn-pulse {
-  animation: floatPulse 3s infinite;
-}
-
-@keyframes floatPulse {
-  0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.5); }
-  70% { box-shadow: 0 0 0 14px rgba(212, 175, 55, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.35);
 }
 
 /* ==========================================================================
-   PART 2 ENHANCEMENTS: Mobile-First, Safe Area Insets, Micro-Interactions
+   PART 2 & 3: 60FPS Mobile Smoothness & GPU Hardware Acceleration
    ========================================================================== */
 
 /* 100dvh & Zero Horizontal Scroll Guarantee */
@@ -310,6 +289,20 @@ body {
   touch-action: manipulation;
 }
 
+/* Force GPU hardware acceleration on main moving elements */
+header,
+.modal-overlay,
+.modal-box,
+.drawer-content,
+.floor-table,
+.menu-card-elevate,
+.floating-cta-container,
+#live-reservation-ticker {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
+}
+
 /* Safe Area Insets for Modern Smartphones (iPhone home indicator) */
 .safe-bottom-padding {
   padding-bottom: max(1.25rem, calc(0.75rem + env(safe-area-inset-bottom)));
@@ -323,56 +316,41 @@ body {
   padding-bottom: max(1.5rem, calc(1rem + env(safe-area-inset-bottom)));
 }
 
-/* Pulsing Amber Ember Glow on 'الأكثر طلباً' (Best Seller) Dishes */
-@keyframes emberGlow {
-  0% {
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2), inset 0 0 10px rgba(245, 158, 11, 0.1);
-    border-color: rgba(212, 175, 55, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 35px rgba(245, 158, 11, 0.5), 0 0 15px rgba(212, 175, 55, 0.35), inset 0 0 18px rgba(245, 158, 11, 0.25);
-    border-color: rgba(245, 158, 11, 0.85);
-  }
-  100% {
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2), inset 0 0 10px rgba(245, 158, 11, 0.1);
-    border-color: rgba(212, 175, 55, 0.4);
-  }
-}
-
+/* Best Seller Dish Highlight - Static GPU friendly styling (No scroll lag) */
 .bestseller-ember-glow {
-  animation: emberGlow 3.2s infinite ease-in-out;
+  border-color: rgba(212, 175, 55, 0.65) !important;
   position: relative;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.12);
 }
 
 .bestseller-ember-glow::before {
   content: '';
   position: absolute;
-  inset: -1px;
+  inset: 0;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.4), rgba(212, 175, 55, 0.2), transparent);
+  border: 1px solid rgba(245, 158, 11, 0.3);
   pointer-events: none;
-  z-index: 1;
 }
 
 /* Menu Card Smooth Elevation & Touch Feedback */
 .menu-card-elevate {
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .menu-card-elevate:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.75), 0 0 25px rgba(212, 175, 55, 0.15);
+  transform: translateY(-6px) translateZ(0);
+  box-shadow: 0 16px 30px -10px rgba(0, 0, 0, 0.75), 0 0 20px rgba(212, 175, 55, 0.12);
 }
 
 .menu-card-elevate:active {
-  transform: scale(0.985);
+  transform: scale(0.985) translateZ(0);
 }
 
 /* Smooth Wizard Step Slide Transitions */
 @keyframes stepSlideInRTL {
   from {
     opacity: 0;
-    transform: translateX(-16px);
+    transform: translateX(-12px);
   }
   to {
     opacity: 1;
@@ -383,7 +361,7 @@ body {
 @keyframes stepSlideInLTR {
   from {
     opacity: 0;
-    transform: translateX(16px);
+    transform: translateX(12px);
   }
   to {
     opacity: 1;
@@ -392,65 +370,65 @@ body {
 }
 
 .step-pane-enter {
-  animation: stepSlideInRTL 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: stepSlideInRTL 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 [dir="ltr"] .step-pane-enter {
-  animation: stepSlideInLTR 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: stepSlideInLTR 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Rewarding Table Selection Animation */
 @keyframes tableRewardSelect {
-  0% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.8);
-  }
-  50% {
-    transform: scale(1.06);
-    box-shadow: 0 0 30px rgba(212, 175, 55, 0.65), 0 0 15px rgba(16, 185, 129, 0.6);
-  }
-  100% {
-    transform: scale(1.04);
-    box-shadow: 0 0 25px rgba(212, 175, 55, 0.45);
-  }
+  0% { transform: scale(0.97) translateZ(0); }
+  50% { transform: scale(1.04) translateZ(0); }
+  100% { transform: scale(1.02) translateZ(0); }
 }
 
 .table-reward-pulse {
-  animation: tableRewardSelect 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: tableRewardSelect 0.25s ease-out;
 }
 
-/* Floating Live Reservation Ticker (Social Proof Toast) */
-#live-reservation-ticker {
-  position: fixed;
-  bottom: max(5.8rem, calc(4.8rem + env(safe-area-inset-bottom)));
-  left: 1.25rem;
-  z-index: 45;
-  pointer-events: none;
-  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-  transform: translateY(24px) scale(0.94);
-  opacity: 0;
-  max-width: calc(100vw - 2.5rem);
+/* Floating Live Reservation Ticker: completely hidden on mobile viewports (<1024px) */
+@media (max-width: 1024px) {
+  #live-reservation-ticker {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 }
 
-[dir="rtl"] #live-reservation-ticker {
-  left: auto;
-  right: 1.25rem;
-}
+/* Desktop only: discreet floating badge at bottom corner */
+@media (min-width: 1025px) {
+  #live-reservation-ticker {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    left: auto;
+    z-index: 45;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(16px);
+    opacity: 0;
+  }
 
-#live-reservation-ticker.ticker-visible {
-  transform: translateY(0) scale(1);
-  opacity: 1;
-  pointer-events: auto;
+  [dir="rtl"] #live-reservation-ticker {
+    right: auto;
+    left: 1.5rem;
+  }
+
+  #live-reservation-ticker.ticker-visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
 
 .ticker-box {
-  background: rgba(14, 16, 24, 0.94);
+  background: #0e1018;
   border: 1px solid rgba(212, 175, 55, 0.35);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
   border-radius: 9999px;
-  padding: 8px 18px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(212, 175, 55, 0.18);
+  padding: 7px 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8), 0 0 15px rgba(212, 175, 55, 0.12);
   display: flex;
   align-items: center;
   gap: 10px;

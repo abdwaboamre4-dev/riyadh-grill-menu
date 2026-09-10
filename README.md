@@ -9,7 +9,7 @@
 
 ## 🌟 Overview
 
-**RIYADH SMOKE & GRILL** is an ultra-premium, interactive VIP restaurant table reservation and digital menu web application inspired by world-class hospitality reservation engines (**SevenRooms** & **OpenTable**), specifically tailored for luxury venues in Riyadh (KAFD, Bujairi Terrace, and Via Riyadh).
+**RIYADH SMOKE & GRILL** is an ultra-premium, interactive VIP restaurant table reservation and digital menu web application inspired by world-class hospitality reservation engines (**SevenRooms** & **OpenTable**), specifically tailored for premier luxury venues in Riyadh — Al Takhassusi St, Riyadh.
 
 ### 🏆 Key Features
 

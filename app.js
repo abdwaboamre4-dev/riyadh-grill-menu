@@ -315,7 +315,7 @@ const TRANSLATIONS = {
     navReserve: "حجز طاولة VIP",
     heroTitlePart1: "فخامة النكهة النجدية",
     heroTitlePart2: "على جمر الحطب الملكي",
-    heroSubtitle: "تجربة طهي استثنائية في قلب الرياض تمزج عراقة لحوم النعيمي المدخنة مع أرقى معايير الضيافة العالمية المستوحاة من كبرى دور الضيافة في كافد وبجيري فيا رياض.",
+    heroSubtitle: "تجربة طهي استثنائية في قلب الرياض تمزج عراقة لحوم النعيمي المدخنة مع أرقى معايير الضيافة النجدية والعالمية — طريق التخصصي، الرياض.",
     heroReserveBtn: "احجز طاولتك الملكية الآن",
     heroMenuBtn: "استكشف قائمة الطعام الفاخرة",
     quickGuests: "عدد الضيوف",
@@ -397,7 +397,7 @@ const TRANSLATIONS = {
     navReserve: "Reserve VIP Table",
     heroTitlePart1: "The Grand Flame of Najd",
     heroTitlePart2: "Smoked Over Royal Charcoal",
-    heroSubtitle: "An ultra-luxury wood-fired culinary destination in the heart of Riyadh, harmonizing Saudi heritage butchery with high-refinement hospitality inspired by Bujairi Terrace and Via Riyadh.",
+    heroSubtitle: "An ultra-luxury wood-fired culinary destination in the heart of Riyadh, harmonizing Saudi heritage butchery with high-refinement hospitality — Al Takhassusi St, Riyadh.",
     heroReserveBtn: "Reserve Your Royal Table",
     heroMenuBtn: "Explore The Master Menu",
     quickGuests: "Party Size",
@@ -568,12 +568,12 @@ function renderMenu() {
     return `
       <div class="glass-panel rounded-2xl overflow-hidden flex flex-col group menu-card-elevate ${isBestSeller ? 'bestseller-ember-glow border-amber-400/60' : 'hover:border-amber-400/40'}">
         <div class="relative h-56 w-full overflow-hidden bg-slate-900">
-          <img src="${item.image}" alt="${title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20"></div>
-          <span class="absolute top-3 right-3 ${isBestSeller ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-black shadow-amber-500/50' : 'bg-amber-500/90 text-black'} text-xs font-bold px-3 py-1 rounded-full shadow-lg backdrop-blur-sm">
+          <img src="${item.image}" alt="${title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none"></div>
+          <span class="absolute top-3 right-3 ${isBestSeller ? 'bg-amber-500 text-black font-extrabold' : 'bg-slate-900/90 text-amber-300'} text-xs px-3 py-1 rounded-full border border-amber-400/30 shadow-md">
             ${isBestSeller ? '🔥 ' : ''}${badge}
           </span>
-          <div class="absolute bottom-3 left-3 bg-black/60 backdrop-blur-md border border-white/10 px-2.5 py-0.5 rounded-lg text-xs text-amber-300 flex items-center gap-1.5">
+          <div class="absolute bottom-3 left-3 bg-black/85 border border-white/10 px-2.5 py-0.5 rounded-lg text-xs text-amber-300 flex items-center gap-1.5">
             <i class="fas fa-fire-alt text-amber-400"></i>
             <span>${item.calories} ${kcal}</span>
           </div>
@@ -987,18 +987,18 @@ function renderFloorMap() {
     }
 
     return `
-      <div onclick="${isAvailable ? `selectTable('${table.id}')` : ''}" class="floor-table p-4 border flex flex-col items-center justify-between ${shapeClass} ${
+      <div data-table-id="${table.id}" data-status="${table.status}" onclick="${isAvailable ? `selectTable('${table.id}', event)` : ''}" class="floor-table p-4 border flex flex-col items-center justify-between ${shapeClass} ${
         isSelected
           ? 'selected'
           : isAvailable
-          ? 'available pulse-emerald'
+          ? 'available'
           : 'reserved'
       }">
         <div class="flex items-center justify-between w-full mb-2">
-          <span class="text-xs font-black tracking-wider ${isSelected ? 'text-amber-300' : isAvailable ? 'text-emerald-400' : 'text-slate-500'}">
+          <span class="table-id-label text-xs font-black tracking-wider ${isSelected ? 'text-amber-300' : isAvailable ? 'text-emerald-400' : 'text-slate-500'}">
             ${table.id}
           </span>
-          <span class="text-[11px] px-2 py-0.5 rounded-full ${
+          <span class="table-status-badge text-[11px] px-2 py-0.5 rounded-full ${
             isSelected 
               ? 'bg-amber-400 text-black font-extrabold' 
               : isAvailable 
@@ -1010,7 +1010,7 @@ function renderFloorMap() {
         </div>
 
         <div class="my-2 flex flex-col items-center text-center">
-          <i class="fas ${icon} text-2xl ${isSelected ? 'text-amber-300' : isAvailable ? 'text-emerald-400' : 'text-slate-600'}"></i>
+          <i class="table-icon fas ${icon} text-2xl ${isSelected ? 'text-amber-300' : isAvailable ? 'text-emerald-400' : 'text-slate-600'}"></i>
           <span class="text-xs font-bold text-white mt-1">${table.capacity} ${guestsLabel}</span>
         </div>
 
@@ -1024,23 +1024,62 @@ function renderFloorMap() {
   renderSelectedTableBadge();
 }
 
-function selectTable(tableId) {
+function selectTable(tableId, event) {
+  if (event) {
+    event.stopPropagation();
+  }
   const table = FLOOR_TABLES.find(t => t.id === tableId);
   if (!table || table.status !== "available") return;
 
   bookingState.tableId = tableId;
-  renderFloorMap();
+
+  // Zero-DOM-rebuild: smoothly toggle classes on all table cards directly
+  const allTableCards = document.querySelectorAll(".floor-table");
+  allTableCards.forEach(card => {
+    const tid = card.getAttribute("data-table-id");
+    const tStatus = card.getAttribute("data-status");
+    if (tStatus !== "available") return; // Keep reserved untouched
+
+    const idLabel = card.querySelector(".table-id-label");
+    const statusBadge = card.querySelector(".table-status-badge");
+    const iconEl = card.querySelector(".table-icon");
+
+    if (tid === tableId) {
+      card.classList.remove("available");
+      card.classList.add("selected");
+      card.classList.add("table-reward-pulse");
+      setTimeout(() => card.classList.remove("table-reward-pulse"), 350);
+
+      if (idLabel) {
+        idLabel.className = "table-id-label text-xs font-black tracking-wider text-amber-300";
+      }
+      if (statusBadge) {
+        statusBadge.className = "table-status-badge text-[11px] px-2 py-0.5 rounded-full bg-amber-400 text-black font-extrabold";
+        statusBadge.textContent = currentLang === "ar" ? "مختارة" : "Chosen";
+      }
+      if (iconEl) {
+        iconEl.classList.remove("text-emerald-400");
+        iconEl.classList.add("text-amber-300");
+      }
+    } else {
+      card.classList.remove("selected", "table-reward-pulse");
+      card.classList.add("available");
+
+      if (idLabel) {
+        idLabel.className = "table-id-label text-xs font-black tracking-wider text-emerald-400";
+      }
+      if (statusBadge) {
+        statusBadge.className = "table-status-badge text-[11px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400";
+        statusBadge.textContent = currentLang === "ar" ? "متاحة" : "Open";
+      }
+      if (iconEl) {
+        iconEl.classList.remove("text-amber-300");
+        iconEl.classList.add("text-emerald-400");
+      }
+    }
+  });
+
   renderSelectedTableBadge();
-
-  // Rewarding table selection animation
-  const selectedEl = document.querySelector(`.floor-table.selected`);
-  if (selectedEl) {
-    selectedEl.classList.add("table-reward-pulse");
-    setTimeout(() => {
-      selectedEl.classList.remove("table-reward-pulse");
-    }, 450);
-  }
-
   showToast(currentLang === "ar" ? `تم تحديد الطاولة ${tableId} بنجاح ✨` : `Table ${tableId} selected successfully ✨`);
 }
 
@@ -1305,20 +1344,36 @@ const SOCIAL_PROOF_RESERVATIONS = [
 
 let currentTickerIndex = 0;
 let tickerTimeout = null;
+let isTickerDismissed = false;
+
+function dismissLiveTicker(e) {
+  if (e) e.stopPropagation();
+  isTickerDismissed = true;
+  if (tickerTimeout) clearTimeout(tickerTimeout);
+  const tickerEl = document.getElementById("live-reservation-ticker");
+  if (tickerEl) {
+    tickerEl.classList.remove("ticker-visible");
+    tickerEl.style.display = "none";
+  }
+}
 
 function startLiveReservationTicker() {
   const tickerEl = document.getElementById("live-reservation-ticker");
   if (!tickerEl) return;
 
   function showNextTicker() {
+    if (isTickerDismissed) return;
     const item = SOCIAL_PROOF_RESERVATIONS[currentTickerIndex];
     currentTickerIndex = (currentTickerIndex + 1) % SOCIAL_PROOF_RESERVATIONS.length;
 
     const text = currentLang === "ar" ? item.ar : item.en;
     tickerEl.innerHTML = `
       <div class="ticker-box">
-        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse flex-shrink-0"></span>
         <span class="text-xs sm:text-sm font-bold text-white tracking-wide">${text}</span>
+        <button onclick="dismissLiveTicker(event)" class="text-slate-400 hover:text-white p-1 rounded transition-colors text-xs ml-1" title="${currentLang === 'ar' ? 'إغلاق' : 'Close'}">
+          <i class="fas fa-times"></i>
+        </button>
       </div>
     `;
 
@@ -1326,6 +1381,7 @@ function startLiveReservationTicker() {
 
     // Automatically fades out after 4 seconds as requested
     setTimeout(() => {
+      if (isTickerDismissed) return;
       tickerEl.classList.remove("ticker-visible");
       // Cycle every 11 seconds
       tickerTimeout = setTimeout(showNextTicker, 11000);
