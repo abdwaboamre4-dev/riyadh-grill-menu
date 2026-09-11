@@ -285,20 +285,30 @@ function getFormattedDate(offsetDays = 0) {
   return d.toISOString().split("T")[0];
 }
 
+let toastTimer = null;
 function showToast(message, isSuccess = true) {
   const container = document.getElementById("toast-container");
   if (!container) return;
-  const toast = document.createElement("div");
-  toast.className = "toast";
-  toast.innerHTML = `
-    <i class="fas ${isSuccess ? 'fa-check-circle text-emerald-400' : 'fa-exclamation-circle text-amber-400'} text-lg"></i>
-    <span class="font-medium">${message}</span>
+
+  if (toastTimer) {
+    clearTimeout(toastTimer);
+    toastTimer = null;
+  }
+
+  container.innerHTML = `
+    <div class="toast">
+      <i class="fas ${isSuccess ? 'fa-check-circle text-emerald-400' : 'fa-exclamation-circle text-amber-400'} text-lg"></i>
+      <span class="font-medium">${message}</span>
+    </div>
   `;
-  container.appendChild(toast);
-  setTimeout(() => {
-    toast.style.animation = "toastOut 0.3s ease forwards";
-    setTimeout(() => toast.remove(), 300);
-  }, 3500);
+
+  toastTimer = setTimeout(() => {
+    const toast = container.querySelector(".toast");
+    if (toast) {
+      toast.style.animation = "toastOut 0.25s ease forwards";
+      setTimeout(() => { container.innerHTML = ""; }, 240);
+    }
+  }, 2200);
 }
 
 // ==========================================
@@ -589,7 +599,7 @@ function renderMenu() {
           </div>
 
           <div class="pt-4 border-t border-white/5 flex items-center justify-between">
-            <button onclick="addToCart('${item.id}')" class="w-full btn-gold py-2.5 px-4 rounded-xl text-sm flex items-center justify-center gap-2">
+            <button onclick="addToCart('${item.id}', this)" class="w-full btn-gold py-2.5 px-4 rounded-xl text-sm flex items-center justify-center gap-2">
               <i class="fas fa-plus-circle"></i>
               <span>${addText}</span>
             </button>
@@ -613,7 +623,7 @@ function filterMenu(category, buttonEl) {
   renderMenu();
 }
 
-function addToCart(dishId) {
+function addToCart(dishId, btnEl = null) {
   const item = MENU_ITEMS.find(d => d.id === dishId);
   if (!item) return;
 
@@ -624,10 +634,21 @@ function addToCart(dishId) {
     cart.push({ ...item, quantity: 1 });
   }
 
+  // Instant tactile feedback directly on button (<0ms delay)
+  if (btnEl) {
+    const originalHTML = btnEl.innerHTML;
+    btnEl.classList.add("btn-added-state");
+    btnEl.innerHTML = `<i class="fas fa-check-circle"></i> <span>${currentLang === "ar" ? "تمت الإضافة ✓" : "Added ✓"}</span>`;
+    setTimeout(() => {
+      btnEl.classList.remove("btn-added-state");
+      btnEl.innerHTML = originalHTML;
+    }, 650);
+  }
+
   updateCartBadge();
   renderCart();
   const title = currentLang === "ar" ? item.title_ar : item.title_en;
-  showToast(currentLang === "ar" ? `تمت إضافة "${title}" لسلة الطلبات الخارجية` : `Added "${title}" to your takeaway order`);
+  showToast(currentLang === "ar" ? `تمت إضافة "${title}" لسلة الطلبات` : `Added "${title}" to your takeaway order`);
 }
 
 function updateCartQuantity(dishId, delta) {
@@ -757,7 +778,7 @@ function checkoutTakeawayWhatsApp() {
 
 function openReservationModal(defaultZone = null) {
   if (defaultZone) {
-    bookingState.zone = defaultZone;
+    selectZone(defaultZone);
   }
   const modal = document.getElementById("reservation-modal");
   if (modal) {
@@ -778,39 +799,43 @@ function closeReservationModal() {
 function goToStep(step) {
   bookingState.step = step;
 
-  // Update tabs UI
+  // Instant zero-reflow tabs and panes switching
   for (let s = 1; s <= 4; s++) {
     const tab = document.getElementById(`step-tab-${s}`);
     const content = document.getElementById(`step-content-${s}`);
     if (tab) {
       if (s === step) {
-        tab.className = "flex-1 py-3 px-4 text-center rounded-xl bg-gradient-to-r from-amber-500/20 to-amber-500/10 border border-amber-400 text-amber-300 font-bold transition-all shadow-lg";
+        tab.className = "flex-1 py-3 px-3 text-center rounded-xl bg-gradient-to-r from-amber-500/20 to-amber-500/10 border border-amber-400 text-amber-300 font-bold transition-all shadow-lg whitespace-nowrap cursor-pointer";
       } else if (s < step) {
-        tab.className = "flex-1 py-3 px-4 text-center rounded-xl bg-slate-800/80 border border-emerald-500/40 text-emerald-400 font-semibold transition-all";
+        tab.className = "flex-1 py-3 px-3 text-center rounded-xl bg-slate-800/80 border border-emerald-500/40 text-emerald-400 font-semibold transition-all whitespace-nowrap cursor-pointer";
       } else {
-        tab.className = "flex-1 py-3 px-4 text-center rounded-xl bg-slate-900/50 border border-white/5 text-slate-400 transition-all";
+        tab.className = "flex-1 py-3 px-3 text-center rounded-xl bg-slate-900/50 border border-white/5 text-slate-400 transition-all whitespace-nowrap cursor-pointer";
       }
     }
     if (content) {
-      if (s === step) {
-        content.style.display = "block";
-        content.classList.remove("step-pane-enter");
-        void content.offsetWidth; // force DOM reflow to restart animation
-        content.classList.add("step-pane-enter");
-      } else {
-        content.style.display = "none";
-        content.classList.remove("step-pane-enter");
-      }
+      content.style.display = (s === step) ? "block" : "none";
     }
   }
 
-  // Refresh active step components
+  // Ensure components exist in DOM without wasteful re-rendering
   if (step === 1) {
-    renderDateChips();
-    renderTimeSlots();
+    const dateContainer = document.getElementById("date-chips-container");
+    if (dateContainer && !dateContainer.hasChildNodes()) {
+      renderDateChips();
+    }
+    const slotContainer = document.getElementById("time-slots-container");
+    if (slotContainer && !slotContainer.hasChildNodes()) {
+      renderTimeSlots();
+    }
   } else if (step === 2) {
-    renderZoneCards();
-    renderFloorMap();
+    const zoneContainer = document.getElementById("zone-cards-container");
+    if (zoneContainer && !zoneContainer.hasChildNodes()) {
+      renderZoneCards();
+    }
+    const mapContainer = document.getElementById("floor-map-grid");
+    if (mapContainer && !mapContainer.hasChildNodes()) {
+      renderFloorMap();
+    }
   } else if (step === 4) {
     renderBookingSummary();
   }

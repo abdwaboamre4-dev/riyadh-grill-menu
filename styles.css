@@ -81,40 +81,38 @@ body {
   box-shadow: 0 0 35px rgba(212, 175, 55, 0.18);
 }
 
-/* Luxury button */
+/* Luxury button - Instant touch & zero-lag */
 .btn-gold {
   background: var(--gold-gradient);
   color: #0c0e12;
   font-weight: 700;
   position: relative;
   overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.btn-gold::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    60deg,
-    transparent 20%,
-    rgba(255, 255, 255, 0.4) 50%,
-    transparent 80%
-  );
-  transform: rotate(30deg) translateX(-100%);
-  transition: transform 0.75s ease;
-}
-
-.btn-gold:hover::after {
-  transform: rotate(30deg) translateX(100%);
+  transition: transform 0.1s ease, box-shadow 0.15s ease;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .btn-gold:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px) translateZ(0);
   box-shadow: 0 10px 25px rgba(212, 175, 55, 0.35);
+}
+
+.btn-gold:active {
+  transform: scale(0.96) translateZ(0) !important;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2) !important;
+  transition: transform 0.04s ease !important;
+}
+
+/* Instant tactile feedback when item is added to cart */
+.btn-added-state {
+  background: #10b981 !important;
+  color: #000000 !important;
+  font-weight: 800 !important;
+  transform: scale(0.97) translateZ(0) !important;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.5) !important;
+  border-color: #34d399 !important;
 }
 
 /* Ambient glow background decorations (static, GPU friendly) */
