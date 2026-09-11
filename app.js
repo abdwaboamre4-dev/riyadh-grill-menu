@@ -812,11 +812,11 @@ function goToStep(step) {
     const content = document.getElementById(`step-content-${s}`);
     if (tab) {
       if (s === step) {
-        tab.className = "flex-1 py-3 px-3 text-center rounded-xl bg-gradient-to-r from-amber-500/20 to-amber-500/10 border border-amber-400 text-amber-300 font-bold transition-all shadow-lg whitespace-nowrap cursor-pointer";
+        tab.className = "step-tab active";
       } else if (s < step) {
-        tab.className = "flex-1 py-3 px-3 text-center rounded-xl bg-slate-800/80 border border-emerald-500/40 text-emerald-400 font-semibold transition-all whitespace-nowrap cursor-pointer";
+        tab.className = "step-tab completed";
       } else {
-        tab.className = "flex-1 py-3 px-3 text-center rounded-xl bg-slate-900/50 border border-white/5 text-slate-400 transition-all whitespace-nowrap cursor-pointer";
+        tab.className = "step-tab inactive";
       }
     }
     if (content) {

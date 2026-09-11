@@ -278,6 +278,60 @@ body {
   opacity: 1;
 }
 
+/* Step Navigation Tabs Box Styling (Guarantees words are 100% inside the boxes) */
+.step-tab {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  min-height: 46px !important;
+  padding: 8px 10px !important;
+  border-radius: 14px !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  overflow: hidden !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  line-height: 1.35 !important;
+  box-sizing: border-box !important;
+  user-select: none !important;
+}
+
+@media (min-width: 640px) {
+  .step-tab {
+    font-size: 0.85rem !important;
+    min-height: 48px !important;
+    padding: 10px 14px !important;
+  }
+}
+
+.step-tab.active {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.22) 0%, rgba(212, 175, 55, 0.08) 100%) !important;
+  border: 1.5px solid var(--gold-primary) !important;
+  color: #fde047 !important;
+  box-shadow: 0 4px 18px rgba(212, 175, 55, 0.25) !important;
+}
+
+.step-tab.completed {
+  background: rgba(16, 185, 129, 0.12) !important;
+  border: 1.5px solid rgba(16, 185, 129, 0.6) !important;
+  color: #34d399 !important;
+}
+
+.step-tab.inactive {
+  background: rgba(15, 23, 42, 0.65) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #94a3b8 !important;
+}
+
+.step-tab.inactive:hover {
+  border-color: rgba(212, 175, 55, 0.4) !important;
+  background: rgba(30, 41, 59, 0.7) !important;
+  color: #f1f5f9 !important;
+}
+
 /* Toast Notifications */
 #toast-container {
   position: fixed;

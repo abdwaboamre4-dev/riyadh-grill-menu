@@ -644,19 +644,21 @@
         </button>
       </div>
 
-      <!-- Step Navigation Tabs -->
-      <div class="p-2 sm:p-4 bg-slate-900/60 border-b border-white/5 flex gap-2 overflow-x-auto text-xs sm:text-sm no-scrollbar">
-        <div id="step-tab-1" class="flex-1 py-3 px-3 text-center rounded-xl bg-amber-500/20 border border-amber-400 text-amber-300 font-bold whitespace-nowrap cursor-pointer" onclick="goToStep(1)">
-          <span data-i18n="step1Tab">1. الموعد والضيوف</span>
-        </div>
-        <div id="step-tab-2" class="flex-1 py-3 px-3 text-center rounded-xl bg-slate-900/50 border border-white/5 text-slate-400 whitespace-nowrap cursor-pointer" onclick="goToStep(2)">
-          <span data-i18n="step2Tab">2. المنطقة والمخطط</span>
-        </div>
-        <div id="step-tab-3" class="flex-1 py-3 px-3 text-center rounded-xl bg-slate-900/50 border border-white/5 text-slate-400 whitespace-nowrap cursor-pointer" onclick="goToStep(3)">
-          <span data-i18n="step3Tab">3. المناسبة والإضافات</span>
-        </div>
-        <div id="step-tab-4" class="flex-1 py-3 px-3 text-center rounded-xl bg-slate-900/50 border border-white/5 text-slate-400 whitespace-nowrap cursor-pointer" onclick="goToStep(4)">
-          <span data-i18n="step4Tab">4. بيانات الضيف والتأكيد</span>
+      <!-- Step Navigation Tabs (Boxes enclosing the 4 steps) -->
+      <div class="p-2.5 sm:p-4 bg-slate-900/80 border-b border-white/10">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 text-xs sm:text-sm">
+          <div id="step-tab-1" class="step-tab active" onclick="goToStep(1)">
+            <span data-i18n="step1Tab">1. الموعد والضيوف</span>
+          </div>
+          <div id="step-tab-2" class="step-tab inactive" onclick="goToStep(2)">
+            <span data-i18n="step2Tab">2. المنطقة والمخطط</span>
+          </div>
+          <div id="step-tab-3" class="step-tab inactive" onclick="goToStep(3)">
+            <span data-i18n="step3Tab">3. المناسبة والإضافات</span>
+          </div>
+          <div id="step-tab-4" class="step-tab inactive" onclick="goToStep(4)">
+            <span data-i18n="step4Tab">4. بيانات الضيف والتأكيد</span>
+          </div>
         </div>
       </div>
 
