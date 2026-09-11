@@ -782,6 +782,13 @@ function openReservationModal(defaultZone = null) {
   }
   const modal = document.getElementById("reservation-modal");
   if (modal) {
+    // Reset scroll positions to top so modal never appears scrolled down
+    modal.scrollTop = 0;
+    const modalBody = modal.querySelector(".overflow-y-auto");
+    if (modalBody) {
+      modalBody.scrollTop = 0;
+    }
+
     modal.classList.add("active");
     document.body.style.overflow = "hidden";
     goToStep(defaultZone ? 2 : 1);
@@ -814,6 +821,16 @@ function goToStep(step) {
     }
     if (content) {
       content.style.display = (s === step) ? "block" : "none";
+    }
+  }
+
+  // Ensure scroll position resets to top on every step change
+  const modal = document.getElementById("reservation-modal");
+  if (modal) {
+    modal.scrollTop = 0;
+    const modalBody = modal.querySelector(".overflow-y-auto");
+    if (modalBody) {
+      modalBody.scrollTop = 0;
     }
   }
 
@@ -1342,6 +1359,28 @@ document.addEventListener("DOMContentLoaded", () => {
   const flowerCheck = document.getElementById("addon-flowers");
   if (flowerCheck) {
     flowerCheck.addEventListener("change", e => toggleFlowersAddon(e.target.checked));
+  }
+
+  // Pre-render reservation wizard components for instantaneous (0ms) opening
+  try {
+    if (typeof renderDateChips === "function") renderDateChips();
+    if (typeof renderTimeSlots === "function") renderTimeSlots();
+    if (typeof renderZoneCards === "function") renderZoneCards();
+    if (typeof renderFloorMap === "function") renderFloorMap();
+  } catch (err) {}
+
+  // Backdrop click listeners to dismiss modals instantly
+  const resModal = document.getElementById("reservation-modal");
+  if (resModal) {
+    resModal.addEventListener("click", (e) => {
+      if (e.target === resModal) closeReservationModal();
+    });
+  }
+  const cartDrawer = document.getElementById("cart-drawer");
+  if (cartDrawer) {
+    cartDrawer.addEventListener("click", (e) => {
+      if (e.target === cartDrawer) toggleCart(false);
+    });
   }
 
   // 60fps Mobile Performance: Global passive listeners for zero scroll-blocking overhead
